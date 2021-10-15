@@ -1,2 +1,0 @@
-# pjhanzlik.gitlab.io
-
