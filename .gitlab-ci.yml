@@ -3,7 +3,7 @@ image: alpine:3
 pages:
   script:
     - apk add brotli gzip
-    - find public -regex '.*\.\(html\|js\|css\|svg)$' > compressable.txt
+    - find public -regex '.*\.\(html\|js\|css\|svg\)$' > compressable.txt
     - xargs --arg-file compressable.txt gzip --best --force --keep
     - xargs --arg-file compressable.txt brotli 
   artifacts:
