@@ -1,10 +1,11 @@
-image: busybox:latest
+image: alpine:3
 
 pages:
   script:
-  - mkdir .public
-  - mv * .public
-  - mv .public public
+    - apk install brotli gzip
+    - find public -regex '.*\.\(html\|js\|css\|svg)$' > compressable.txt
+    - xargs --arg-file compressable.txt gzip --best --force --keep
+    - xargs --arg-file compressable.txt brotli 
   artifacts:
     paths:
     - public
