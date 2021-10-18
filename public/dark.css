@@ -1,8 +1,0 @@
-html {
-    --frame-color: dimgrey;
-    --text-color: whitesmoke;
-    --background-color: black;
-    --link-color: steelblue;
-    --visited-color: mediumslateblue;
-    background-color: var(--background-color);
-}
