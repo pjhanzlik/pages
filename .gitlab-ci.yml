@@ -3,7 +3,7 @@ image: alpine:3
 pages:
   script:
     - apk add brotli gzip
-    - find public -regex '.*\.\(html\|js\|css\|svg\)$' > compressable.txt
+    - find public -regex '.*\.\(html\|js\|css\|svg\|json\)$' | sed -e "s/'/\\\'/g" -e "s/$/'/" -e "s/^/'/" > compressable.txt
     - xargs -a compressable.txt gzip --best --force --keep
     - xargs -a compressable.txt brotli 
   artifacts:
