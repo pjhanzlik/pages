@@ -3,9 +3,9 @@ image: alpine:3
 pages:
   script:
     - apk add brotli gzip
-    - find public -regex '.*\.\(html\|js\|css\|svg\|json\)$' | sed -e "s/'/\\\'/g" -e "s/$/'/" -e "s/^/'/" > compressable.txt
-    - xargs -a compressable.txt gzip --best --force --keep
-    - xargs -a compressable.txt brotli 
+    - find public -print0 -regex '.*\.\(html\|js\|css\|svg\|json\)$' > compressable.txt
+    - xargs -0 -a compressable.txt gzip --best --force --keep
+    - xargs -0 -a compressable.txt brotli 
   artifacts:
     paths:
     - public
