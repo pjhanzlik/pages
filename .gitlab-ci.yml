@@ -12,7 +12,6 @@ pages:
     - mkdir .apk
     - ln -s /var/cache/apk .apk
     - apk add --update-cache brotli gzip
-    - ls .apk
     - find public -type f -regex '.*\.\(html\|js\|css\|svg\|json\)$' -print0 > compressable.txt
     - xargs -0 -a compressable.txt gzip --best --force --keep
     - xargs -0 -a compressable.txt brotli 
