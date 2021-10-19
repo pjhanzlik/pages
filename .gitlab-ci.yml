@@ -1,4 +1,4 @@
-image: alpine:2
+image: alpine:3
 
 cache:
   key: $CI_COMMIT_REF_SLUG
