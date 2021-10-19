@@ -1,5 +1,6 @@
 {
     "name": "Spork Tribute",
+    "short_name": "Spork",
     "start_url": ".",
     "display": "fullscreen",
     "icons": [
