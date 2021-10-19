@@ -1,17 +1,10 @@
 image: alpine:3
 
-cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-    - .apk
-
 # auto manifest.json, apple-touch-icon.png, splash.png, and service-worker.js would be really nice
 
 pages:
   script:
-    - mkdir -p .apk
-    - ln -s /var/cache/apk .apk
-    - apk add --update-cache brotli gzip
+    - apk add --no-cache brotli gzip
     - find public -type f -regex '.*\.\(html\|js\|css\|svg\|json\)$' -print0 > compressable.txt
     - xargs -0 -a compressable.txt gzip --best --force --keep
     - xargs -0 -a compressable.txt brotli 
