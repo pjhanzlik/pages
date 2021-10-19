@@ -1,8 +1,13 @@
 image: alpine:3
 
+# auto manifest.json, apple-touch-icon.png, splash.png, and service-worker.js would be really nice
+
 pages:
   script:
     - apk add brotli gzip
+    - ls /var/cache/apk/
+    - ls /var/lib/apk/
+    - ls /etc/apk/cache/
     - find public -type f -regex '.*\.\(html\|js\|css\|svg\|json\)$' -print0 > compressable.txt
     - xargs -0 -a compressable.txt gzip --best --force --keep
     - xargs -0 -a compressable.txt brotli 

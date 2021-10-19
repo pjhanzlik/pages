@@ -1,0 +1,32 @@
+{
+    "name": "Spork Tribute",
+    "start_url": ".",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "Spork in tall grass.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "any"
+        },
+        {
+            "src": "Spork's face.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "maskable"
+        },
+        {
+            "src": "splash.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "apple-touch-icon.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        }
+    ],
+    "theme_color": "#1a1a1a"
+}
