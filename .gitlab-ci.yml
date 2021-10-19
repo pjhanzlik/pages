@@ -9,7 +9,7 @@ cache:
 
 pages:
   script:
-    - mkdir .apk
+    - mkdir -p .apk
     - ln -s /var/cache/apk .apk
     - apk add --update-cache brotli gzip
     - find public -type f -regex '.*\.\(html\|js\|css\|svg\|json\)$' -print0 > compressable.txt
