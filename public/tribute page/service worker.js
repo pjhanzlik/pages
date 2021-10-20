@@ -1,7 +1,7 @@
 this.addEventListener('install', (event) => {
     const cacheEssentials = async () => {
         const cache = await caches.open("essentials");
-        return cache.addAll([
+        return await cache.addAll([
           '.', 
           './Spork in tall grass.svg', 
           './manifest.json', 
@@ -14,7 +14,7 @@ this.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     const cacheFirstFetch = async () => {
         const response = await caches.match(event.request);
-        return response ? response : fetch(event.request);
+        return response ? response : await fetch(event.request);
     }
     event.respondWith(cacheFirstFetch())
 });
@@ -23,7 +23,7 @@ self.addEventListener('activate', (event) => {
   const deleteNonEssentialCaches = async () => {
       const keys = await caches.keys();
       const nonEssentials = keys.filter((key) => key !== "essentials")
-      return Promise.all(nonEssentials.map(caches.delete))
+      return await Promise.all(nonEssentials.map(caches.delete))
   }
   event.waitUntil(deleteNonEssentialCaches())
 });
