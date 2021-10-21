@@ -1,36 +1,32 @@
+const currentCache = "boop";
+
 this.addEventListener('install', (event) => {
-    const cacheEssentials = async () => {
-        const cache = await caches.open("essentials");
-        return cache.addAll([
+    const cacheAll = async () => {
+        const installCache = await caches.open(currentCache);
+        return installCache.addAll([
           '.', 
+          './manifest.json',
           './Spork in tall grass.svg', 
-          './manifest.json', 
           "./Spork's face.svg",
-          "./apple-touch-icon.png",
-          "./splash.png"
+          './android splash icon.png',
+          './apple-touch-icon.png'
         ])
     }
-    event.waitUntil(cacheEssentials());
+    event.waitUntil(cacheAll());
 });
 
 self.addEventListener('fetch', (event) => {
-    const cacheFirstFetch = async () => {
-        const response = await caches.match(event.request);
-        if(response) {
-          return response;
-        }
-        else {
-          return fetch(event.request);
-        }
+    const cacheOnly = async () => {
+        return caches.match(event.request);
     }
-    event.respondWith(cacheFirstFetch())
+    event.respondWith(cacheOnly())
 });
 
 self.addEventListener('activate', (event) => {
-  const deleteNonEssentialCaches = async () => {
+  const deleteOldCaches = async () => {
       const keys = await caches.keys();
-      const nonEssentials = keys.filter((key) => key !== "essentials")
-      return Promise.all(nonEssentials.map((key) => caches.delete(key)))
+      const old = keys.filter((key) => key !== currentCache);
+      return Promise.all(old.map((key) => caches.delete(key)))
   }
-  event.waitUntil(deleteNonEssentialCaches())
+  event.waitUntil(deleteOldCaches())
 });
