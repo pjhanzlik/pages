@@ -1,11 +1,12 @@
 this.addEventListener('install', (event) => {
     const cacheEssentials = async () => {
         const cache = await caches.open("essentials");
-        return await cache.addAll([
+        return cache.addAll([
           '.', 
           './Spork in tall grass.svg', 
           './manifest.json', 
-          "./Spork's face.svg"
+          "./Spork's face.svg",
+          "./apple-touch-icon.png"
         ])
     }
     event.waitUntil(cacheEssentials());
@@ -14,7 +15,12 @@ this.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     const cacheFirstFetch = async () => {
         const response = await caches.match(event.request);
-        return response ? response : await fetch(event.request);
+        if(response) {
+          return response;
+        }
+        else {
+          return fetch(event.request);
+        }
     }
     event.respondWith(cacheFirstFetch())
 });
@@ -23,7 +29,7 @@ self.addEventListener('activate', (event) => {
   const deleteNonEssentialCaches = async () => {
       const keys = await caches.keys();
       const nonEssentials = keys.filter((key) => key !== "essentials")
-      return await Promise.all(nonEssentials.map(caches.delete))
+      return Promise.all(nonEssentials.map((key) => caches.delete(key)))
   }
   event.waitUntil(deleteNonEssentialCaches())
 });
