@@ -6,7 +6,8 @@ this.addEventListener('install', (event) => {
           './Spork in tall grass.svg', 
           './manifest.json', 
           "./Spork's face.svg",
-          "./apple-touch-icon.png"
+          "./apple-touch-icon.png",
+          "./splash.png"
         ])
     }
     event.waitUntil(cacheEssentials());
