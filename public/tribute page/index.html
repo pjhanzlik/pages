@@ -5,17 +5,8 @@
   <title>Spork Tribute</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Faint in peace, sweet Bidoof.">
-  <meta name="theme-color" content="#1a1a1a">
-  <link rel="apple-touch-icon" type="image/png" href="./apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="./Spork's face.svg">
-  <link rel="manifest" href="./manifest.json">
-  <script type="module">
-    if('serviceWorker' in navigator) {
-      window.addEventListener('load', async () => {
-        return await navigator.serviceWorker.register("./service worker.js");
-      })
-    }
-  </script>
+  <script type="module" src="/main.js"></script>
   <style>
     html {
         display: grid;
