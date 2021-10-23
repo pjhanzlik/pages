@@ -1,33 +1,34 @@
-const currentCache = "booooop";
+const currentCache = "blooooooooop";
 
-this.addEventListener('install', (event) => {
-    const cacheEssentails = async () => {
+this.addEventListener('install', (event)=>{
+    const cacheEssentails = async()=>{
         const installCache = await caches.open(currentCache);
         return installCache.add('.')
     }
     event.waitUntil(cacheEssentails());
-});
+}
+);
 
-self.addEventListener('fetch', (event) => {
-    const fetchAndCacheResponse = async (request) => {
-      const [response, cache] = await Promise.all([
-        fetch(request), caches.open(currentCache)]
-        );
-      cache.put(request, response.clone())
-      return response;
+self.addEventListener('fetch', (event)=>{
+    const fetchAndCacheResponse = async(request)=>{
+        const [response,cache] = await Promise.all([fetch(request), caches.open(currentCache)]);
+        cache.put(request, response.clone())
+        return response;
     }
-    const cacheFirstResponse = async () => {
-      const cached = await caches.match(event.request);
-      return cached || await fetchAndCacheResponse(event.request);
+    const cacheFirstResponse = async()=>{
+        const cached = await caches.match(event.request);
+        return cached || await fetchAndCacheResponse(event.request);
     }
     event.respondWith(cacheFirstResponse(event.request))
-});
+}
+);
 
-self.addEventListener('activate', (event) => {
-  const deleteOldCaches = async () => {
-      const keys = await caches.keys();
-      const old = keys.filter((key) => key !== currentCache);
-      return Promise.all(old.map((key) => caches.delete(key)))
-  }
-  event.waitUntil(deleteOldCaches())
-});
+self.addEventListener('activate', (event)=>{
+    const deleteOldCaches = async()=>{
+        const keys = await caches.keys();
+        const old = keys.filter((key)=>key !== currentCache);
+        return Promise.all(old.map((key)=>caches.delete(key)))
+    }
+    event.waitUntil(deleteOldCaches())
+}
+);
