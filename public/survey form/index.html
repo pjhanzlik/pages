@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Manage Inventory</title>
+        <title>Move Stock</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="A form for generic retailers.">
         <link rel="icon" type="image/svg+xml" href="./tilted round green boxes.svg">
@@ -10,93 +10,123 @@
         <style></style>
     </head>
     <body>
-        <h1 id="title">Manage Inventory</h1>
-        <p id="description">Generally locate retail stock</p>
+        <h1 id="title">Move Inventory</h1>
         <form id="survey-form">
-            <dl>
-                <dt>
-                    <label for="email" id="email-label">Employee Email</label>
-                </dt>
-                <dd>
-                    <input type="email" name="email" id="email" autocomplete="email" required placeholder="Ask manager">
-                </dd>
-            </dl>
             <fieldset>
-                <legend>Item Info</legend>
+                <legend id="description">Relocate retail stock</legend>
                 <dl>
                     <dt>
-                        <label for="name" id="name-label">ID</label>
+                        <label for="authority" id="authority-label">Authorization Email</label>
                     </dt>
                     <dd>
-                        <input type="text" name="name" id="name" required placeholder="Bar code digits">
+                        <input type="email" name="authority" id="authority" autocomplete="email" required placeholder="Ask manager">
                     </dd>
-                    <dt>
-                        <label for="number" id="number-label">Quantity</label>
-                    </dt>
-                    <dd>
-                        <input type="number" name="number" id="number" min="0" max="9000" placeholder="Ask coworker">
-                    </dd>
-                </dl>
-                <fieldset>
-                    <legend>Markdowns</legend>
-                    <dl>
-                        <dt>
-                            <label for="used" id="used-label">Used</label>
-                        </dt>
-                        <dd>
-                            <input type="checkbox" name="markdowns" id="used" value="used">
-                        </dd>
-                        <dt>
-                            <label for="damaged" id="damaged-label">Damaged</label>
-                        </dt>
-                        <dd>
-                            <input type="checkbox" name="markdowns" id="damaged" value="damaged">
-                        </dd>
-                    </dl>
-                </fieldset>
+                    <fieldset>
+                        <legend>To</legend>
+                        <dl>
+                            <dt>
+                                <label for="to" id="to-label">Area</label>
+                            </dt>
+                            <dd>
+                                <select required name="to" id="to">
+                                    <optgroup label="Backroom">
+                                        <option>Item Storage</option>
+                                        <option>Bulk Pallet</option>
+                                    </optgroup>
+                                    <optgroup label="Floor">
+                                        <option selected>Assigned Aisle</option>
+                                        <option>Checklane</option>
+                                        <option>Department Endcap</option>
+                                    </optgroup>
+                                </select>
+                            </dd>
+                            <dt>
+                                <label for="directions" id="directions-label">Directions</label>
+                            </dt>
+                            <dd>
+                                <textarea name="directions" id="directions" placeholder="How to find items" maxlength="255"></textarea>
+                            </dd>
+                        </dl>
+                    </fieldset>
+                    <fieldset>
+                        <legend>From</legend>
+                        <fieldset>
+                            <legend>Backroom</legend>
+                            <dl>
+                                <dt>
+                                    <label for="storage" id="storage-label">Item Storage</label>
+                                </dt>
+                                <dd>
+                                    <input required name="from" id="storage" value="storage" type="radio">
+                                </dd>
+                                <dt>
+                                    <label for="bulk" id="bulk-label">Bulk Pallet</label>
+                                </dt>
+                                <dd>
+                                    <input required name="from" id="bulk" value="bulk" type="radio">
+                                </dd>
+                            </dl>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Floor</legend>
+                            <dl>
+                                <dt>
+                                    <label for="aisle" id="aisle-label">Assigned Aisle</label>
+                                </dt>
+                                <dd>
+                                    <input required name="from" id="aisle" value="aisle" type="radio">
+                                </dd>
+                                <dt>
+                                    <label for="checklane" id="checklane-label">Checklane</label>
+                                </dt>
+                                <dd>
+                                    <input required name="from" id="checklane" value="checklane" type="radio">
+                                </dd>
+                                <dt>
+                                    <label for="endcap" id="endcap-label">Department Endcap</label>
+                                </dt>
+                                <dd>
+                                    <input required name="from" id="endcap" value="endcap" type="radio">
+                                </dd>
+                            </dl>
+                        </fieldset>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Item</legend>
+                        <dl>
+                            <dt>
+                                <label for="item" id="item-label">ID</label>
+                            </dt>
+                            <dd>
+                                <input type="text" name="item" id="item" required placeholder="Bar code digits">
+                            </dd>
+                            <dt>
+                                <label for="quantity" id="quantity-label">Quantity</label>
+                            </dt>
+                            <dd>
+                                <input type="number" required name="quantity" id="quantity" min="1" max="99" placeholder="0">
+                            </dd>
+                        </dl>
+                        <fieldset>
+                            <legend>Markdowns</legend>
+                            <dl>
+                                <dt>
+                                    <label for="used" id="used-label">Used</label>
+                                </dt>
+                                <dd>
+                                    <input type="checkbox" name="markdown" id="used" value="used">
+                                </dd>
+                                <dt>
+                                    <label for="damaged" id="damaged-label">Damaged</label>
+                                </dt>
+                                <dd>
+                                    <input type="checkbox" name="markdown" id="damaged" value="damaged">
+                                </dd>
+                            </dl>
+                        </fieldset>
+                    </fieldset>
+                    <button type="submit" id="submit">Submit</button>
             </fieldset>
-            <fieldset>
-                <legend>Operation</legend>
-                <dl>
-                    <dt>
-                        <label for="add" id="add-label">Add</label>
-                    </dt>
-                    <dd>
-                        <input required name="operation" id="add" value="add" type="radio">
-                    </dd>
-                    <dt>
-                        <label for="remove" id="remove-label">Remove</label>
-                    </dt>
-                    <dd>
-                        <input required name="operation" id="remove" value="remove" type="radio">
-                    </dd>
-                </dl>
-                <dt>
-                    <label for="dropdown" id="dropdown-label" required>Location</label>
-                </dt>
-                <dd>
-                    <select required name="dropdown" id="dropdown">
-                        <optgroup label="Backroom">
-                            <option>Item Bin</option>
-                            <option>Bulk Pallet</option>
-                        </optgroup>
-                        <optgroup label="Floor">
-                            <option selected>Assigned Aisle</option>
-                            <option>Checklane</option>
-                            <option>Department Endcap</option>
-                        </optgroup>
-                    </select>
-                </dd>
-            </fieldset>
-            <dl>
-                <dt>
-                    <label for="comments" id="comments-label">Important Notes</label>
-                </dt>
-                <dd>
-                    <textarea name="comments" id="comments" placeholder="Include info useful in the future" maxlength="500"></textarea>
-                </dd>
-            </dl>
-            <button type="submit" id="submit">Submit</button>
         </form>
     </body>
 </html>
