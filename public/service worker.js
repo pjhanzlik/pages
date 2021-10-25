@@ -1,4 +1,4 @@
-const currentCache = "9";
+const currentCache = "0.0.9";
 
 this.addEventListener('install', (event)=>{
     const cacheEssentails = async()=>{
@@ -12,7 +12,7 @@ this.addEventListener('install', (event)=>{
 self.addEventListener('fetch', (event)=>{
     const fetchAndCacheResponse = async(request)=>{
         const [response,cache] = await Promise.all([fetch(request), caches.open(currentCache)]);
-        cache.put(request, response.clone())
+        if(response.ok) {cache.put(request, response.clone())};
         return response;
     }
     const cacheFirstResponse = async()=>{

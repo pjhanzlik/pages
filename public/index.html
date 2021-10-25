@@ -6,14 +6,30 @@
         <title>Paul Hanzlik</title>
         <meta name="description" content="Wonderfully insane person">
         <link rel="icon" type="image/svg+xml" href="./happy emoji portrait.svg">
-        <script type="module" src="/main.js"></script>
+        <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#ffffff">
+        <script async type="module">
+        
+import FullscreenList from "/FullscreenList.js";
+customElements.define("fullscreen-list", FullscreenList);
+
+if ('serviceWorker'in navigator) {
+    window.addEventListener('load', async()=>{
+        return await navigator.serviceWorker.register("/service worker.js");
+    }
+    )
+}
+        </script>
     </head>
     <body>
         <h1>Hi, I'm Paul!</h1>
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
-        <iframe title="Tribute Page" width="240" height="200" src="./tribute page"></iframe>
-        <iframe title="Survey Form" width="240" height="200" src="./survey form"></iframe>
+        <fullscreen-list>
+            <iframe title="Tribute Page" width="240" height="200" src="./tribute page"></iframe>
+            <iframe title="Survey Form" width="240" height="200" src="./survey form"></iframe>
+        </fullscreen-list>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
 </html>
