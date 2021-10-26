@@ -9,12 +9,6 @@
         <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#ffffff">
-        <script async type="module">
-            if(customElements) {
-                const FullscreenList = await import("/FullscreenList.js");
-                customElements.define("fullscreen-list", FullscreenList.default);
-            }
-        </script>
         <script type="module">
             if ('serviceWorker'in navigator) {
                 window.addEventListener('load', async()=>{
@@ -23,19 +17,21 @@
                 )
             }
         </script>
+        <script async type="module">
+            if(customElements) {
+                const AppList = await import("/AppList.js");
+                customElements.define("app-list", AppList.default);
+            }
+        </script>
     </head>
     <body>
         <h1>Hi, I'm Paul!</h1>
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
-        <fullscreen-list>
-            <a href="./tribute page">
-                <img width="92" height="92" src="./tribute page/Spork's face.svg" alt="Tribute Page">
-            </a>
-            <a href="./survey form">
-                <img width="92" height="92" src="./survey form/tilted round green boxes.svg" alt="Survey Form">
-            </a>
-        </fullscreen-list>
+        <app-list>
+            <a href="./tribute page" data-icon="./tribute page/Spork\'s face.svg">Tribute Page</a>
+            <a href="./survey form" data-icon="./survey form/tilted round green boxes.svg">Survey Form</a>
+        </app-list>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
 </html>
