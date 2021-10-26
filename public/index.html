@@ -10,16 +10,18 @@
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#ffffff">
         <script async type="module">
-        
-import FullscreenList from "/FullscreenList.js";
-customElements.define("fullscreen-list", FullscreenList);
-
-if ('serviceWorker'in navigator) {
-    window.addEventListener('load', async()=>{
-        return await navigator.serviceWorker.register("/service worker.js");
-    }
-    )
-}
+            if(customElements) {
+                const FullscreenList = await import("/FullscreenList.js");
+                customElements.define("fullscreen-list", FullscreenList.default);
+            }
+        </script>
+        <script type="module">
+            if ('serviceWorker'in navigator) {
+                window.addEventListener('load', async()=>{
+                    return await navigator.serviceWorker.register("/service worker.js");
+                }
+                )
+            }
         </script>
     </head>
     <body>
@@ -27,8 +29,12 @@ if ('serviceWorker'in navigator) {
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
         <fullscreen-list>
-            <iframe title="Tribute Page" width="240" height="200" src="./tribute page"></iframe>
-            <iframe title="Survey Form" width="240" height="200" src="./survey form"></iframe>
+            <a href="./tribute page">
+                <img width="92" height="92" src="./tribute page/Spork's face.svg" alt="Tribute Page">
+            </a>
+            <a href="./survey form">
+                <img width="92" height="92" src="./survey form/tilted round green boxes.svg" alt="Survey Form">
+            </a>
         </fullscreen-list>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
