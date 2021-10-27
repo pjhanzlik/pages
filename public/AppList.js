@@ -30,17 +30,29 @@ export default class extends HTMLElement {
       this.initialTemplate = document.createElement("template");
       this.initialTemplate.innerHTML = `<style>
         #dialog {
-            background: var(--dialog-background, #757575);
+            background: var(--dialog-background, white);
             display: none;
+            grid-column: 1 / -1;
+            width: 100%;
         }
         #dialog[src] {
             display: initial;
         }
         .icon {
             background-repeat: no-repeat;
-            width: 92px;
-            height: 92px;
+            width: var(--icon-length);
+            height: var(--icon-length);
             color: transparent;
+        }
+        :host {
+            --icon-length: 7rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, var(--icon-length));
+            gap: 1rem;
+            place-items: center;
+            place-content: center;
+            background: gainsboro;
+            
         }
       </style>`;
 
