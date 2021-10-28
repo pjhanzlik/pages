@@ -43,6 +43,7 @@ export default class extends HTMLElement {
             width: var(--icon-length);
             height: var(--icon-length);
             color: transparent;
+            background-position: center;
         }
         :host {
             --icon-length: 7rem;

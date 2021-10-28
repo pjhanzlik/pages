@@ -8,19 +8,25 @@
             "src": "/happy emoji portrait.svg",
             "type": "image/svg+xml",
             "sizes": "any",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "/happy emoji portrait.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "maskable"
         },
         {
             "src": "/android splash icon.png",
             "type": "image/png",
             "sizes": "512x512",
-            "purpose": "any maskable"
+            "purpose": "any"
         },
         {
             "src": "/apple-touch-icon.png",
             "type": "image/png",
             "sizes": "192x192",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         }
     ],
     "theme_color": "#ffffff",
