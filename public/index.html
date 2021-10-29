@@ -19,8 +19,8 @@
         </script>
         <script async type="module">
             if(customElements) {
-                const AppList = await import("/AppList.js");
-                customElements.define("app-list", AppList.default);
+                const PageCarousel = await import("/PageCarousel.js");
+                customElements.define("page-carousel", PageCarousel.default);
             }
         </script>
     </head>
@@ -28,10 +28,10 @@
         <h1>Hi, I'm Paul!</h1>
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
-        <app-list>
+        <page-carousel>
             <a href="./tribute page" data-icon="./tribute page/Spork\'s face.svg">Tribute Page</a>
             <a href="./survey form" data-icon="./survey form/tilted round green boxes.svg">Survey Form</a>
-        </app-list>
+        </page-carousel>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
 </html>
