@@ -9,6 +9,19 @@
         <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
         <link rel="manifest" href="/manifest.json">
         <meta name="theme-color" content="#ffffff">
+        <style>
+            body {
+                background-color: black;
+                color: gainsboro;
+                font-family: sans-serif;
+            }
+            :link {
+                color: inherit;
+            }
+            :visited {
+                color: inherit;
+            }
+        </style>
         <script type="module">
             if ('serviceWorker'in navigator) {
                 window.addEventListener('load', async()=>{
@@ -36,6 +49,9 @@
             <a slot="hypertext" href="./survey form">
                 <img src="./survey form/tilted round green boxes.svg" alt="Retail" width="92" height="92">
                 Survey Form
+            </a>
+            <a slot="hypertext" href="./fake">
+                Not a real link
             </a>
         </banana-preview>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
