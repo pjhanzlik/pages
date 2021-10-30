@@ -19,8 +19,8 @@
         </script>
         <script async type="module">
             if(customElements) {
-                const PageCarousel = await import("/PageCarousel.js");
-                customElements.define("page-carousel", PageCarousel.default);
+                const BananaPreview = await import("/BananaPreview.js");
+                customElements.define("banana-preview", BananaPreview.default);
             }
         </script>
     </head>
@@ -28,10 +28,16 @@
         <h1>Hi, I'm Paul!</h1>
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
-        <page-carousel>
-            <a href="./tribute page" data-icon="./tribute page/Spork\'s face.svg">Tribute Page</a>
-            <a href="./survey form" data-icon="./survey form/tilted round green boxes.svg">Survey Form</a>
-        </page-carousel>
+        <banana-preview>
+            <a slot="hypertext" href="./tribute page">
+                <img src="./tribute page/Spork's face.svg" alt="Bidoof" width="92" height="92">
+                Tribute Page
+            </a>
+            <a slot="hypertext" href="./survey form">
+                <img src="./survey form/tilted round green boxes.svg" alt="Retail" width="92" height="92">
+                Survey Form
+            </a>
+        </banana-preview>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
 </html>

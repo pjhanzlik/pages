@@ -1,4 +1,4 @@
-const currentCache = "0.0.21";
+const currentCache = "0.0.22";
 
 this.addEventListener('install', (event)=>{
     const cacheEssentails = async()=>{
