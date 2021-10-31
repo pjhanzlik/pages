@@ -6,15 +6,15 @@ export default class extends HTMLElement {
             this.constructor.initialTemplate.content.cloneNode("true")
         );
 
-        const hypertext = this.shadowRoot.querySelector('slot[name="hypertext"]');
-        hypertext.addEventListener("mouseover", this.loadPreview);
-        hypertext.addEventListener('focusin', this.loadPreview);      
-        hypertext.addEventListener("click", this.fullscreenPreview);
+        const previews = this.shadowRoot.querySelector('slot[name="preview"]');
+        previews.addEventListener("mouseover", this.loadPreview);
+        previews.addEventListener('focusin', this.loadPreview);      
+        previews.addEventListener("click", this.fullscreenPreview);
     }
 
     loadPreview = async (event) => {
         const preview = this.shadowRoot.getElementById("preview");
-        const anchor = event.composedPath().find((ele) => ele.slot === 'hypertext');
+        const anchor = event.composedPath().find((ele) => ele.href);
         
         if(anchor.href && preview.src != anchor.href) {
             preview.src = anchor.href;
@@ -33,24 +33,21 @@ export default class extends HTMLElement {
       :host {
           display: grid;
           place-items: center;
-      }
-      #preview {
-          display: none;
+          grid-auto-rows: 320px;
+          grid-auto-columns: 240px;
+          grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) );
       }
       @media screen {
           #preview {
               background: var(--preview-background, white);
           }
-
-          #preview[src][title]:fullscreen,
-          slot[name="hypertext"]:focus-within + #preview[src][title],
-          slot[name="hypertext"]:hover + #preview[src][title] {
-              display: initial;
-          }
       }
       </style>
-      <slot name="hypertext">
-      </slot>
-      <iframe id="preview" width="240" height="320"></iframe>`;
+      <slot name="preview"></slot>
+      <iframe title="Previewed Page" id="preview" width="240" height="320"></iframe>`;
+      this.triggerTemplate = document.createElement("template");
+      this.triggerTemplate.innerHTML = `<label>
+        <input type="radio" name="preview">
+      </label>`
     }
 }
