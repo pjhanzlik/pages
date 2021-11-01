@@ -5,49 +5,51 @@ export default class extends HTMLElement {
         this.shadowRoot.append(
             this.constructor.initialTemplate.content.cloneNode("true")
         );
+        this.overlayResizeObserver = new ResizeObserver(this.resizeGrid);
 
-        const previews = this.shadowRoot.querySelector('slot[name="preview"]');
-        previews.addEventListener("mouseover", this.loadPreview);
-        previews.addEventListener('focusin', this.loadPreview);      
-        previews.addEventListener("click", this.fullscreenPreview);
+        const features = this.shadowRoot.querySelector('slot[name="feature"]');
+        const preview = this.shadowRoot.querySelector('slot[name="previewer"]');
+        this.overlayResizeObserver.observe(preview);
+
+        for(const feature of features.children) {
+            feature.setAttribute(target, "banana-phone");
+        }
+        features.addEventListener("mouseover", this.loadfeature);
+        features.addEventListener('focusin', this.loadfeature);
     }
 
-    loadPreview = async (event) => {
-        const preview = this.shadowRoot.getElementById("preview");
-        const anchor = event.composedPath().find((ele) => ele.href);
-        
-        if(anchor.href && preview.src != anchor.href) {
-            preview.src = anchor.href;
-            preview.title = anchor.textContent;
+    resizeGrid = (entries) => {
+        for(const entry of entries) {
+            this.style.setProperty("--preview-height", `${entry.contentRect.height}px`);
+            this.style.setProperty("--preview-width", `${entry.contentRect.width}px`);
+            console.log(entry);
         }
     }
 
-    fullscreenPreview = async (event) => {
-        event.preventDefault();
-        this.shadowRoot.getElementById("preview").requestFullscreen();
+    loadfeature = (event) => {
+        const targetedAnchor = event.composedPath().find((ele) => (ele.href && ele.target));
+        if(targetedAnchor) {
+            targetedAnchor.click();
+            const blarg = this.shadowRoot.getElementById("blarg");
+            blarg.style.top = `${targetedAnchor.offsetTop}px`;
+        }
     }
 
     static {
       this.initialTemplate = document.createElement("template");
       this.initialTemplate.innerHTML = `<style>
-      :host {
+      slot[name="feature"] {
           display: grid;
-          place-items: center;
-          grid-auto-rows: 320px;
-          grid-auto-columns: 240px;
-          grid-template-columns: repeat( auto-fill, minmax(240px, 1fr) );
+          gap: 2em;
+          grid-auto-rows: var(--preview-height, none);
+          grid-template-columns: repeat( auto-fill, var(--preview-width, auto));
       }
-      @media screen {
-          #preview {
-              background: var(--preview-background, white);
-          }
+      slot[name="previewer"] {
+          display: grid;
+          position: absolute;
       }
       </style>
-      <slot name="preview"></slot>
-      <iframe title="Previewed Page" id="preview" width="240" height="320"></iframe>`;
-      this.triggerTemplate = document.createElement("template");
-      this.triggerTemplate.innerHTML = `<label>
-        <input type="radio" name="preview">
-      </label>`
+      <slot id="test" name="feature"></slot>
+      <slot id="blarg" name="previewer"></slot>`
     }
 }

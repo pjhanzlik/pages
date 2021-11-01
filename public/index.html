@@ -14,12 +14,40 @@
                 background-color: black;
                 color: gainsboro;
                 font-family: sans-serif;
+                margin: 0;
+            }
+            article {
+                display: grid;
+                background: goldenrod;
+                place-items: center;
+                grid-auto-rows: 320px;
+                grid-template-columns: repeat(auto-fill, 240px);
+            }
+            banana-preview {
+                display: flex;
+                gap: 2em;
+            }
+            a[href="./tribute page"] {
+                background-image: url("./tribute page/Spork's face.svg");
+            }
+            a[href="./survey form"] {
+                background-image: url("./survey form/tilted round green boxes.svg");
+            }
+            a {
+                display: block;
+                text-align: center;
+                min-height: 7em;
+                background-repeat: no-repeat;
+                background-position: bottom center;
             }
             :link {
                 color: inherit;
             }
             :visited {
                 color: inherit;
+            }
+            iframe {
+                border: none;
             }
         </style>
         <script type="module">
@@ -32,8 +60,12 @@
         </script>
         <script async type="module">
             if(customElements) {
-                const BananaPreview = await import("/BananaPreview.js");
-                customElements.define("banana-preview", BananaPreview.default);
+                const importThenDefineDefault = async (url, tag) => {
+                    const js = await import(url);
+                    customElements.define(tag, js.default);
+                }
+                importThenDefineDefault("./BananaPreview.js", "banana-preview");
+                importThenDefineDefault("./FullscreenOverlay.js", "fullscreen-overlay");
             }
         </script>
     </head>
@@ -42,14 +74,9 @@
         <img height="200" width="200" src="./happy emoji portrait.svg" alt="happy white emoji face with messy brown hair">
         <h2>My Websites</h2>
         <banana-preview>
-            <a slot="preview" href="./tribute page">
-                <img src="./tribute page/Spork's face.svg" alt="Bidoof" width="92" height="92">
-                Tribute Page
-            </a>
-            <a  slot="preview" href="./survey form">
-                <img src="./survey form/tilted round green boxes.svg" alt="Retail" width="92" height="92">
-                Survey Form
-            </a>
+            <a target="banana-phone" slot="feature" href="./tribute page">Tribute Page</a>
+            <a target="banana-phone" slot="feature" href="./survey form">Survey Form</a>
+            <iframe slot="previewer" src="./tribute page" name="banana-phone" width="240" height="320">
         </banana-preview>
         <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">Follow me on GitLab</a>
     </body>
