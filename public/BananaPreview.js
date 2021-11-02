@@ -5,51 +5,57 @@ export default class extends HTMLElement {
         this.shadowRoot.append(
             this.constructor.initialTemplate.content.cloneNode("true")
         );
-        this.overlayResizeObserver = new ResizeObserver(this.resizeGrid);
+        const viewportResizeObserver = new ResizeObserver(this.resizeIcons);
 
-        const features = this.shadowRoot.querySelector('slot[name="feature"]');
-        const preview = this.shadowRoot.querySelector('slot[name="previewer"]');
-        this.overlayResizeObserver.observe(preview);
+        const icons = this.shadowRoot.getElementById("icons");
+        const viewport = this.shadowRoot.getElementById("viewport");
+        viewportResizeObserver.observe(viewport);       
 
-        for(const feature of features.children) {
-            feature.setAttribute(target, "banana-phone");
-        }
-        features.addEventListener("mouseover", this.loadfeature);
-        features.addEventListener('focusin', this.loadfeature);
+        icons.addEventListener("mouseover", this.clickLoadTargetedAnchor, {passive: true});
+        icons.addEventListener('focusin', this.clickLoadTargetedAnchor, {passive: true});
     }
 
-    resizeGrid = (entries) => {
+    resizeIcons = (entries) => {
+        const icons = this.shadowRoot.getElementById("icons");
         for(const entry of entries) {
-            this.style.setProperty("--preview-height", `${entry.contentRect.height}px`);
-            this.style.setProperty("--preview-width", `${entry.contentRect.width}px`);
-            console.log(entry);
+            icons.style.setProperty("grid-auto-rows", `${entry.contentRect.height}px`);
+            icons.style.setProperty("grid-template-columns", "240px 240px");
         }
     }
 
-    loadfeature = (event) => {
+    clickLoadTargetedAnchor = (event) => {
         const targetedAnchor = event.composedPath().find((ele) => (ele.href && ele.target));
         if(targetedAnchor) {
+            const viewport = this.shadowRoot.getElementById("viewport");
+            const target = this.querySelector(`[name="${targetedAnchor.target}"]`);
+            const left = targetedAnchor.offsetLeft - this.offsetLeft;
+            const top = targetedAnchor.offsetTop - this.offsetTop;
+            viewport.style.transform = `translate(${left}px, ${top}px)`;
             targetedAnchor.click();
-            const blarg = this.shadowRoot.getElementById("blarg");
-            blarg.style.top = `${targetedAnchor.offsetTop}px`;
+
+            // block flash of previous content
+            target.style.opacity = 0;
+            target.addEventListener("load", this.constructor.reveal, {once: true, passive: true});
         }
     }
 
     static {
+      this.reveal = (event) => {
+          event.target.style.opacity = 1;
+      }
+
       this.initialTemplate = document.createElement("template");
       this.initialTemplate.innerHTML = `<style>
-      slot[name="feature"] {
+      #icons {
           display: grid;
           gap: 2em;
-          grid-auto-rows: var(--preview-height, none);
-          grid-template-columns: repeat( auto-fill, var(--preview-width, auto));
       }
-      slot[name="previewer"] {
+      #viewport {
           display: grid;
           position: absolute;
       }
       </style>
-      <slot id="test" name="feature"></slot>
-      <slot id="blarg" name="previewer"></slot>`
+      <slot id="icons" name="icon"></slot>
+      <slot id="viewport" name="interface"></slot>`
     }
 }
