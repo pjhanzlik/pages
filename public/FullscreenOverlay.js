@@ -6,8 +6,10 @@ export default class extends HTMLElement {
             this.constructor.initialTemplate.content.cloneNode("true")
         );
 
-        const slot = this.shadowRoot.querySelector("slot");
-        slot.onclick = this.fullscreenSlot;
+        const windows = this.shadowRoot.getElementById("windows");
+        windows.onslotchange = (event) => {
+            event.target
+        }
     }
     
     fullscreenSlot = (event) => {
@@ -18,6 +20,8 @@ export default class extends HTMLElement {
         this.initialTemplate = document.createElement("template");
         this.initialTemplate.innerHTML = `<style>
         </style>
-        <slot></slot>`
+        <slot id="windows" name="expandable"></slot>`
+        this.fullscreenButton = document.createElement("template");
+        this.fullscreenButton.innerHTML = `<button>Fullscreen</button>`
     }
 }

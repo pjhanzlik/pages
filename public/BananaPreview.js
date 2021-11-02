@@ -1,3 +1,13 @@
+/*
+The major problem with covering up targeted anchors
+is that we no longer can use open in new tab for mouse users
+
+As such, we should convert to a carousel style quick opener
+Whether the widget should display icons in a grid or a scorllbox
+should be up to the user, but the interface portion (affected by icons)
+should be always visible
+*/
+
 export default class extends HTMLElement {
     constructor() {
         super();
@@ -9,7 +19,7 @@ export default class extends HTMLElement {
 
         const icons = this.shadowRoot.getElementById("icons");
         const viewport = this.shadowRoot.getElementById("viewport");
-        viewportResizeObserver.observe(viewport);       
+        viewportResizeObserver.observe(viewport);    
 
         icons.addEventListener("mouseover", this.clickLoadTargetedAnchor, {passive: true});
         icons.addEventListener('focusin', this.clickLoadTargetedAnchor, {passive: true});
@@ -19,7 +29,7 @@ export default class extends HTMLElement {
         const icons = this.shadowRoot.getElementById("icons");
         for(const entry of entries) {
             icons.style.setProperty("grid-auto-rows", `${entry.contentRect.height}px`);
-            icons.style.setProperty("grid-template-columns", "240px 240px");
+            icons.style.setProperty("grid-template-columns", `repeat( auto-fit, ${entry.contentRect.width}px )`);
         }
     }
 
@@ -34,18 +44,19 @@ export default class extends HTMLElement {
             targetedAnchor.click();
 
             // block flash of previous content
-            target.style.opacity = 0;
-            target.addEventListener("load", this.constructor.reveal, {once: true, passive: true});
+            viewport.style.opacity = 0;
+            target.addEventListener("load", (event) => {
+                viewport.style.opacity = 1;
+            }, {once: true, passive: true});
         }
     }
 
     static {
-      this.reveal = (event) => {
-          event.target.style.opacity = 1;
-      }
-
       this.initialTemplate = document.createElement("template");
       this.initialTemplate.innerHTML = `<style>
+      :host {
+          display: grid;
+      }
       #icons {
           display: grid;
           gap: 2em;
