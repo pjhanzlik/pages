@@ -2,99 +2,101 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Move Stock</title>
+        <title>Take Stock</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="A form for generic retailers.">
         <link rel="icon" type="image/svg+xml" href="./tilted round green boxes.svg">
         <style>
+            button, [type="checkbox"] + label, [type="radio"] + label {
+                background-color: black;
+            }
+
+            button {
+                color: inherit;
+            }
+
+            label, legend {
+                font-weight: bold;
+                padding-top: 0.75em;
+            }
+
+            legend ~ label {
+                font-weight: normal;
+                padding-top: initial;
+            }
+
             body {
                 font-family: sans-serif;
                 background-color: hsl(113deg 100% 5%);
                 color: hsl(113deg 50% 60%);
                 margin: 0;
-                font-size: 1.2em;
+                display: grid;
+                font-size: 1.3em;
                 text-align: center;
             }
 
-            fieldset {
+            form {
+                text-align: initial;
                 background-color: hsla(113, 50%, 30%, 0.33);
-                border: unset;
                 border-radius: 0.25em;
-                margin: 0;
-                padding: 0;
-                display: grid;
-                place-content: center;
+                display: flex;
+                flex-flow: column;
             }
 
-            legend {
-                font-weight: bold;
-                background-color: red;
-                border-radius: 0.25em;
+            button, textarea, select, input {
+                font-size: inherit;
+                margin: 0;
+            }
+
+            fieldset {
+                border: none;
+                margin: 0;
+                gap: 0.3rem 0.75rem;
+                padding: 0;
+                display: grid;
+                align-items: center;
+                grid-template-columns: auto 1fr;
             }
         </style>
     </head>
     <body>
-        <h1 id="title">Move Inventory</h1>
-        <form id="survey-form">
+        <h1>Reorganize Retail</h1>
+        <p>Helps you figure out what is in stock</p>
+        <form>
+            <label for="employee">Employee Email</label>
+            <input type="email" name="employee" id="employee" required placeholder="Ask your boss">
+            <label for="barcode">Barcode</label>
+            <input type="text" name="barcode" id="barcode" required placeholder="Usually 10 to 13 digits">
+            <label for="quantity">Quantity</label>
+            <input type="number" required name="quantity" id="quantity" min="1" max="99" placeholder="0">
             <fieldset>
-                <legend id="description">Relocate retail stock</legend>
-                <label for="authority" id="authority-label">Authorization Email</label>
-                <input type="email" name="authority" id="authority" autocomplete="email" required placeholder="Ask manager">
-                <fieldset>
-                    <legend>To</legend>
-                    <label for="to" id="to-label">Area</label>
-                    <fieldset>
-                        <legend>Test</legend>
-                        <select required name="to" id="to">
-                            <optgroup label="Backroom">
-                                <option>Item Storage</option>
-                                <option>Bulk Pallet</option>
-                            </optgroup>
-                            <optgroup label="Floor">
-                                <option selected>Assigned Aisle</option>
-                                <option>Checklane</option>
-                                <option>Department Endcap</option>
-                            </optgroup>
-                        </select>
-                    </fieldset>
-                    <label for="directions" id="directions-label">Directions</label>
-                    <textarea name="directions" id="directions" placeholder="How to find items" maxlength="255"></textarea>
-                </fieldset>
-                <fieldset>
-                    <legend>From</legend>
-                    <fieldset>
-                        <legend>Backroom</legend>
-                        <label for="storage" id="storage-label">Item Storage</label>
-                        <input required name="from" id="storage" value="storage" type="radio">
-                        <label for="bulk" id="bulk-label">Bulk Pallet</label>
-                        <input required name="from" id="bulk" value="bulk" type="radio">
-                    </fieldset>
-                    <fieldset>
-                        <legend>Floor</legend>
-                        <label for="aisle" id="aisle-label">Assigned Aisle</label>
-                        <input required name="from" id="aisle" value="aisle" type="radio">
-                        <label for="checklane" id="checklane-label">Checklane</label>
-                        <input required name="from" id="checklane" value="checklane" type="radio">
-                        <label for="endcap" id="endcap-label">Department Endcap</label>
-                        <input required name="from" id="endcap" value="endcap" type="radio">
-                    </fieldset>
-                </fieldset>
-                <fieldset>
-                    <legend>Item</legend>
-                    <label for="item" id="item-label">ID</label>
-                    <input type="text" name="item" id="item" required placeholder="Bar code digits">
-                    <label for="quantity" id="quantity-label">Quantity</label>
-                    <input type="number" required name="quantity" id="quantity" min="1" max="99" placeholder="0">
-                    <fieldset>
-                        <legend>Markdowns</legend>
-                        <label for="used" id="used-label">Used</label>
-                        <input type="checkbox" name="markdown" id="used" value="used">
-                        <label for="damaged" id="damaged-label">Damaged</label>
-                        <input type="checkbox" name="markdown" id="damaged" value="damaged">
-                    </fieldset>
-                </fieldset>
-                <button type="submit" id="submit">Submit</button>
+                <legend>Location</legend>
+                <input required name="location" id="storage" value="storage" type="radio">
+                <label for="storage">Item Storage</label>
+                <input required name="location" id="bulk" value="bulk" type="radio">
+                <label for="bulk">Bulk Pallet</label>
+                <input required name="location" id="aisle" value="aisle" type="radio">
+                <label for="aisle">Assigned Aisle</label>
+                <input required name="location" id="checklane" value="checklane" type="radio">
+                <label for="checklane">Checklane</label>
+                <input required name="location" id="endcap" value="endcap" type="radio">
+                <label for="endcap">Department Endcap</label>
             </fieldset>
+            <fieldset>
+                <legend>Markdown</legend>
+                <input type="checkbox" name="markdown" id="used" value="used">
+                <label for="used">Used</label>
+                <input type="checkbox" name="markdown" id="damaged" value="damaged">
+                <label for="damaged">Damaged</label>
+            </fieldset>
+            <label for="feedback">Feedback</label>
+            <select required name="feedback" id="feedback">
+                <option>No problems to report</option>
+                <option>Double check my work</option>
+            </select>
+            <label for="directions">Additional Directions</label>
+            <textarea name="directions" id="directions" placeholder="How to find items, reasoning for markdown, and so forth" maxlength="255"></textarea>
+            <button type="submit" id="submit">Submit</button>
         </form>
     </body>
 </html>
