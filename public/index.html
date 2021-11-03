@@ -28,15 +28,14 @@
                 background-image: url("./happy emoji portrait.svg");
             }
             a[href*="./"] {
-                display: block;
-                text-align: center;
                 height: 3rem;
                 width: 3rem;
                 background-repeat: no-repeat;
                 background-position: center;
-                border-radius: 1rem;
                 background-color: steelblue;
+                border-radius: 1rem;
                 color: transparent;
+                overflow-x: clip;
             }
             a[href*="./"]:visited {
                 background-color: rebeccapurple;
@@ -47,17 +46,22 @@
             }
             main > article {
                 display: grid;
-                grid-template-columns: repeat(5, minmax(auto, 50px));
+                grid-template-columns: repeat(5, minmax(auto, 3.3rem));
+                justify-content: space-between;
                 justify-items: center;
+                row-gap: .5rem;
             }
             main > article > h3,
             main > article > banana-overlay {
                 grid-column: span 5;
             }
+            h3 {
+                    margin: 0.75rem 0;
+            }
             main {
                 display: flex;
-                gap: 1rem;
                 flex-flow: row wrap;
+                gap: 1rem;
                 align-items: end;
                 justify-content: center;
             }
@@ -109,58 +113,60 @@
             <main>
                 <article>
                     <h3>No Script Required Sites</h3>
-                    <banana-overlay>
-                        <iframe title="Responsive Web Design Project" name="responsive-web-design" width="240" height="240"></iframe>
-                    </banana-overlay>
                     <a href="./tribute page" target="responsive-web-design">Tribute Page</a>
                     <a href="./survey form" target="responsive-web-design">Survey Form</a>
                     <a href="./product landing page" target="responsive-web-design">Product Landing Page</a>
                     <a href="./technical documentation page" target="responsive-web-design">Technical Documentation Page</a>
                     <a href="./" target="responsive-web-design">Personal Portfolio Webpage</a>
+                    <banana-overlay>
+                        <iframe title="Responsive Web Design Project" name="responsive-web-design" width="240" height="240"></iframe>
+                    </banana-overlay>
+                    
                 </article>
                 <article>
                     <h3>Web Components</h3>
-                    <banana-overlay>
-                        <iframe title="Front End Development Libary Project" name="front-end-development-libraries" width="240" height="240"></iframe>
-                    </banana-overlay>
                     <a href="./random quote machine" target="front-end-development-libraries">Random Quote Machine</a>
                     <a href="./markdown previewer" target="front-end-development-libraries">Markdown Previewer</a>
                     <a href="./drum machine" target="front-end-development-libraries">Drum Machine</a>
                     <a href="./javascript calculator" target="front-end-development-libraries">JavaScript Calculator</a>
                     <a href="./25 + 5 clock" target="front-end-development-libraries">25 + 5 Clock</a>
+                    <banana-overlay>
+                        <iframe title="Front End Development Libary Project" name="front-end-development-libraries" width="240" height="240"></iframe>
+                    </banana-overlay>
+                    
                 </article>
                 <article>
                     <h3><abbr title="Scalable Vector Graphics">SVG</abbr> Diagrams</h3>
-                    <banana-overlay>
-                        <iframe title="Data Visualization Project" name="data-visualization" width="240" height="240"></iframe>
-                    </banana-overlay>
                     <a href="./bar chart" target="data-visualization">Bar Chart</a>
                     <a href="./scatterplot graph" target="data-visualization">Scatterplot Graph</a>
                     <a href="./head map" target="data-visualization">Heat Map</a>
                     <a href="./choropleth map" target="data-visualization">Choropleth Map</a>
                     <a href="./treemap diagram" target="data-visualization">Treemap Diagram</a>
+                    <banana-overlay>
+                        <iframe title="Data Visualization Project" name="data-visualization" width="240" height="240"></iframe>
+                    </banana-overlay>
                 </article>
                 <article>
                     <h3><abbr title="Application Programming Interface">API</abbr> Service Workers</h3>
-                    <banana-overlay>
-                        <iframe title="Back End Development Project" name="back-end-development" width="240" height="240"></iframe>
-                    </banana-overlay>
                     <a href="./timestamp microservice" target="back-end-development">Timestamp Microservice</a>
                     <a href="./request header parser microservice" target="back-end-development">Request Header Parser Microservice</a>
                     <a href="./url shortener microservice" target="back-end-development">URL Shortener Microservice</a>
                     <a href="./exercise tracker microservice" target="back-end-development">Exercise Tracker</a>
                     <a href="./file metadata microservice" target="back-end-development">File Metadata Microservice</a>
+                    <banana-overlay>
+                        <iframe title="Back End Development Project" name="back-end-development" width="240" height="240"></iframe>
+                    </banana-overlay>
                 </article>
                 <article>
                     <h3>Locally Tested <abbr title="Progressive Web App">PWA</abbr>s</h3>
-                    <banana-overlay>
-                        <iframe title="Quality Assurance Project" name="quality-assurance" width="240" height="240"></iframe>
-                    </banana-overlay>
                     <a href="./metric-imperial converter" target="quality-assurance">Metric-Imperial Converter</a>
                     <a href="./issue tracker" target="quality-assurance">Issue Tracker</a>
                     <a href="./personal library" target="quality-assurance">Personal Library</a>
                     <a href="./sudoku solver" target="quality-assurance">Sudoku Solver</a>
                     <a href="./american british translaotr" target="quality-assurance">American British Translator</a>
+                    <banana-overlay>
+                        <iframe title="Quality Assurance Project" name="quality-assurance" width="240" height="240"></iframe>
+                    </banana-overlay>
                 </article>
             </main>
         </article>
