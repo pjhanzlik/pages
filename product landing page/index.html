@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Velocipede Squeakers</title>
+	<style>
+img {
+	height: 1.35em;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+main > article > section > div > span {
+	display: none;
+	grid-row: span 2;
+	grid-column: 1;
+	font-size: 3em;
+}
+html {
+	scroll-padding-top: 11.5em;
+	margin: 0;
+}
+
+body {
+	background-color: lavender;
+	color: black;
+	position: absolute;
+	top: 11.5em;
+	font-family: sans-serif;
+	text-align: center;
+	scroll-padding-top: 11.5em;
+	width: 100%;
+	margin: 0;
+}
+
+header {
+	z-index: 1;
+	top: 0;
+	display: grid;
+	grid-template-rows: 5.5em 5.5em;
+	grid-gap: 0.5em;
+	position: fixed;
+	width: 100%;
+	background-color: lavender;
+}
+
+h1 {
+	display: inline-block;
+	font-weight: normal;
+	margin: 0;
+	font-size: 1.9em;
+	line-height: 1em;
+}
+header > span {
+	align-self: center;
+}
+header > nav {
+	display: flex;
+	justify-content: space-around;
+	flex-flow: column;
+	align-items: center;
+}
+
+header > nav > a {
+	text-decoration: none;
+	color: inherit;
+	font-size: 1.1em;
+}
+
+video {
+	max-width: 100%;
+	background-color: black;
+}
+
+footer {
+	background-color: lightgray;
+	justify-self: stretch;
+	display: grid;
+	justify-content: flex-end;
+	padding: 1em 2em;
+	grid-gap: 0.5em;
+}
+
+main {
+	max-width: 1000px;
+	margin: auto;
+}
+
+input[type=email] {
+	width: 275px;
+}
+
+input[type=submit] {
+	padding: 0.25em 1.25em;
+	font-weight: bold;
+}
+
+button {
+	padding: 0.75em 1.25em;
+	border-radius: 0.25em;
+	margin: 1em;
+}
+
+input[type=submit],
+button {
+	font-size: 1.25em;
+	transition: background-color 0.5s;
+	border: none;
+	background-color: orange;
+	text-transform: uppercase;
+	color: inherit;
+}
+
+input[type=submit]:hover,
+button:hover {
+	background-color: darkorange;
+}
+
+form {
+	display: grid;
+	grid-row-gap: 1em;
+	justify-items: center;
+}
+
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+div {
+	display: grid;
+}
+
+section {
+	display: grid;
+	grid-row-gap: 3em;
+	margin: 3em 0;
+}
+
+main > ul {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
+
+main > ul > li {
+	box-sizing: border-box;
+	border: solid thin black;
+	max-width: 18em;
+	width: 100%;
+	margin: 1em;
+}
+
+main > ul > li > h3 {
+	background-color: lightgray;
+	margin: 0;
+	padding: 1em;
+}
+
+main > ul > li > ul {
+	display: grid;
+	grid-row-gap: 0.5em;
+	padding: 1em;
+}
+
+strong {
+	font-size: 1.75em;
+}
+footer > nav {
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: 1em;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+footer > nav > a {
+	font-size: 1.25em;
+	text-decoration: none;
+	color: inherit;
+}
+article {
+	margin: 2em 0;
+	display: grid;
+	grid-gap: 1.5em;
+	justify-items: center;
+}
+@media (min-width: 35em) {
+	header {
+		grid-template-rows: 5.5em;
+		grid-auto-flow: column;
+	}
+	html {
+		scroll-padding-top: 5.5em;
+	}
+	body {
+		top: 5.5em;
+		scroll-padding-top: 5.5em;
+	}
+}
+@media (min-width: 25em) {
+	main > article > section > div > span {
+		display: block;
+	}
+	main > article > section > div {
+		grid-template-columns: 0.2fr 0.8fr;
+	}
+	main > article > section > div > h2,
+	main > article > section > div > p {
+		text-align: left;
+	}
+}
+@media (min-width: 60em) {
+	main > ul {
+		flex-flow: row;
+	}
+	header > nav {
+		flex-flow: row;
+	}
+}
+
+	</style>
+</head>
+
+<body>
+	<header id="header">
+		<span>
+			<img height="30" id="header-img" src="https://svgsilh.com/svg/1295038.svg" alt="Velocipede Squeakers logo." title="SVG Silh: These SVG images were created by modifying the images of Pixabay. These are released under Creative Commons CC0. Copyright svgsilh.com all rights reserved." />
+			<h1>Velocipede Squeakers</h1>
+		</span>
+      <nav id="nav-bar">
+        <a href="#top" class="nav-link">Benefits</a>
+        <a href="#video" class="nav-link">Demonstration</a>
+        <a href="#products" class="nav-link">Products</a>
+      </nav>
+  </header>
+  <main id="top">
+		<article>
+			<h2>Machined, mass-produced treasures</h2>
+			<form id="form" action="https://www.freecodecamp.com/email-submit">
+				<input type="email" name="email" id="email" placeholder="Insert email address here" />
+				<input type="submit" id="submit" value="Get Informed"></input>
+			</form>
+			<section>
+				<div>
+					<span>✊</span>
+					<h2>Outstanding Durability</h2>
+					<p>
+						Built to take a tumble, our horns produce some of the squeakiest sounds around in all weather conditions.
+					</p>
+				</div>
+				<div>
+					<span>✋</span>
+					<h2>Delivers Fast</h2>
+					<p>
+						One quick squeeze puts you right in the center of attention.  Oh, and all horns always ship first class.
+					</p>
+				</div>
+				<div>
+					<span>👍</span>
+					<h2>Quality Guaranteed</h2>
+					<p>
+						Should our product give up the ghost before you do we will gladly ship you another for free!
+					</p>
+				</div>
+			</section>
+			<video id="video" controls="" preload="metadata">
+				<source src="https://archive.org/download/LMCC_Safety_Expert_-_Trail_Safety/LMCC_Safety_Expert_-_Trail_Safety.mp4" type="video/mp4" />
+        <source src="https://archive.org/download/LMCC_Safety_Expert_-_Trail_Safety/LMCC_Safety_Expert_-_Trail_Safety.ogv" type="video/ogg" />
+		</video>
+		</article>
+		<ul id="products">
+			<li>
+				<h3>Cute Horn</h3>
+          <ul>
+            <li><strong>$3</strong></li>
+            <li>Dolor sit.</li>
+            <li>Dolor sit.</li>
+            <li>Dolor sit amet.</li>
+            <li>Dolor sit.</li>
+          </ul>
+          <button>Select</button>
+        </li>
+        <li>
+          <h3>Cool Horn</h3>
+          <ul>
+            <li><strong>$6</strong></li>
+            <li>Dolor sit.</li>
+            <li>Dolor sit.</li>
+            <li>Dolor sit amet.</li>
+            <li>Dolor sit.</li>
+          </ul>
+          <button>Select</button>
+        </li>
+        <li>
+          <h3>Best Horn</h3>
+          <ul>
+            <li><strong>$12</strong></li>
+            <li>Wonderful for beginners</li>
+            <li>Easy to hold and mount</li>
+            <li>Dolor sit amet.</li>
+            <li>Dolor sit.</li>
+          </ul>
+          <button>Select</button>
+        </li>
+      </ul>
+      <footer id="references">
+        <nav>
+          <a href="#top">Top</a>
+          <a href="#video">Terms</a>
+          <a href="#form">Contact</a>
+        </nav>
+        <p>Copyright 2019, Velocipede Squeakers</p>
+      </footer>
+    </main>
+  </body>
+</html>

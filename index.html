@@ -11,77 +11,90 @@
         <meta name="theme-color" content="#ffffff">
         <style>
             body {
-                background-color: black;
-                color: gainsboro;
+                background-color: #f8f9fa;
+                color: #343a40;
                 font-family: sans-serif;
                 margin: 0;
                 font-size: 1.75em;
             }
 
-            a[href="./tribute page"] {
-                background-image: url("./tribute page/Spork face.svg");
+            a {
+                font-size: 1rem;
+                text-decoration: none;
+                border-radius: 4px;
+                padding: 4px;
+                font-weight: 540;
+                text-align: center;
+                display: block;
+                max-width: max-content;
+                background-color: #364fc7;
+                color: #edf2ff;
+            }   
+            a:focus {
+                filter: contrast(150%);
             }
 
-            a[href="./survey form"] {
-                background-image: url("./survey form/tilted round green boxes.svg");
-            }
-
-            a[href="./"] {
-                background-image: url("./happy emoji portrait.svg");
-            }
-
-            a[href*="./"] {
-                height: 3rem;
-                width: 3rem;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-color: steelblue;
-                border-radius: 1rem;
-                color: transparent;
-                overflow-x: clip;
-            }
-
-            a[href*="./"]:visited {
-                background-color: rebeccapurple;
-            }
 
             h3 {
-                margin: 0.75rem 0;
+                margin: 0;
             }
 
             main article {
                 display: grid;
                 gap: 1em;
-            }
-            footer,
-            main section {
-                    display: flex;
-                    flex-flow: row wrap;
-                    align-items: end;
-                    justify-content: center;
-                    gap: 1em;
-            }
-            main article {
+                align-items: start;
                 max-width: 15rem;
             }
-            :link {
-                color: steelblue;
+
+            footer, main section {
+                display: flex;
+                flex-flow: row wrap;
+                align-items: center;
+                justify-content: center;
             }
 
-            :visited {
-                color: rebeccapurple;
+
+            footer a:nth-of-type(5n+1) {
+                    background-color: #087f5b;
+                    color: #e6fcf5;
+            }
+
+            footer a:nth-of-type(5n+2) {
+                background-color: #2b8a3e;
+                color: #ebfbee;
+            }
+
+            footer a:nth-of-type(5n+3) {
+                background-color: #5c940d;
+                color: #f4fce3;
+            }
+
+            footer a:nth-of-type(5n+4) {
+                    background-color: #e67700;
+                    color: #fff9db;
+            }
+
+            footer a:nth-of-type(5n) {
+                    background-color: #d9480f;
+                    color: #fff4e6;
+            }
+
+            main section {
+                gap: 2em;
+            }
+
+            footer {
+                gap: 0.75em;
             }
 
             iframe {
                 border: none;
-                background-color: palevioletred;
+                background-color: #ced4da;
                 width: 100%;
                 border-radius: 1rem;
             }
         </style>
         <script type="module">
-            
-            
             
             
             if ('serviceWorker'in navigator) {
@@ -90,8 +103,6 @@
                 }
                 )
             }
-        
-        
         
         
         </script>
@@ -125,11 +136,11 @@
                         <iframe src="./tribute page" title="Responsive Web Design Project" name="responsive-web-design" width="240" height="240"></iframe>
                     </banana-overlay>
                     <footer>
-                            <a href="./tribute page" target="responsive-web-design">Tribute Page</a>
-                            <a href="./survey form" target="responsive-web-design">Survey Form</a>
-                            <a href="./product landing page" target="responsive-web-design">Product Landing Page</a>
-                            <a href="./technical documentation page" target="responsive-web-design">Technical Documentation Page</a>
-                            <a href="./" target="responsive-web-design">Personal Portfolio Webpage</a>
+                        <a href="./tribute page" target="responsive-web-design">Tribute Page</a>
+                        <a href="./survey form" target="responsive-web-design">Survey Form</a>
+                        <a href="./product landing page" target="responsive-web-design">Product Landing Page</a>
+                        <a href="./technical documentation page" target="responsive-web-design">Technical Documentation Page</a>
+                        <a href="./" target="responsive-web-design">Personal Portfolio Webpage</a>
                     </footer>
                 </article>
                 <article>
@@ -138,43 +149,47 @@
                         <iframe src="./random quote machine" title="Front End Development Libary Project" name="front-end-development-libraries" width="240" height="240"></iframe>
                     </banana-overlay>
                     <footer>
-                            <a href="./random quote machine" target="front-end-development-libraries">Random Quote Machine</a>
-                            <a href="./markdown previewer" target="front-end-development-libraries">Markdown Previewer</a>
-                            <a href="./drum machine" target="front-end-development-libraries">Drum Machine</a>
-                            <a href="./javascript calculator" target="front-end-development-libraries">JavaScript Calculator</a>
-                            <a href="./25 + 5 clock" target="front-end-development-libraries">25 + 5 Clock</a>
+                        <a href="./random quote machine" target="front-end-development-libraries">Random Quote Machine</a>
+                        <a href="./markdown previewer" target="front-end-development-libraries">Markdown Previewer</a>
+                        <a href="./drum machine" target="front-end-development-libraries">Drum Machine</a>
+                        <a href="./javascript calculator" target="front-end-development-libraries">JavaScript Calculator</a>
+                        <a href="./25 + 5 clock" target="front-end-development-libraries">25 + 5 Clock</a>
                     </footer>
                 </article>
                 <article>
                     <h3>
                         <abbr title="Scalable Vector Graphics">SVG</abbr>
                         Diagrams   
+                    
+                    
                     </h3>
                     <banana-overlay>
                         <iframe src="./bar chart" title="Data Visualization Project" name="data-visualization" width="240" height="240"></iframe>
                     </banana-overlay>
                     <footer>
-                            <a href="./bar chart" target="data-visualization">Bar Chart</a>
-                            <a href="./scatterplot graph" target="data-visualization">Scatterplot Graph</a>
-                            <a href="./head map" target="data-visualization">Heat Map</a>
-                            <a href="./choropleth map" target="data-visualization">Choropleth Map</a>
-                            <a href="./treemap diagram" target="data-visualization">Treemap Diagram</a>
+                        <a href="./bar chart" target="data-visualization">Bar Chart</a>
+                        <a href="./scatterplot graph" target="data-visualization">Scatterplot Graph</a>
+                        <a href="./head map" target="data-visualization">Heat Map</a>
+                        <a href="./choropleth map" target="data-visualization">Choropleth Map</a>
+                        <a href="./treemap diagram" target="data-visualization">Treemap Diagram</a>
                     </footer>
                 </article>
                 <article>
                     <h3>
                         <abbr title="Application Programming Interface">API</abbr>
                         Service Workers                   
+                    
+                    
                     </h3>
                     <banana-overlay>
                         <iframe src="./timestamp microservice" title="Back End Development Project" name="back-end-development" width="240" height="240"></iframe>
                     </banana-overlay>
                     <footer>
-                            <a href="./timestamp microservice" target="back-end-development">Timestamp Microservice</a>
-                            <a href="./request header parser microservice" target="back-end-development">Request Header Parser Microservice</a>
-                            <a href="./url shortener microservice" target="back-end-development">URL Shortener Microservice</a>
-                            <a href="./exercise tracker microservice" target="back-end-development">Exercise Tracker</a>
-                            <a href="./file metadata microservice" target="back-end-development">File Metadata Microservice</a>
+                        <a href="./timestamp microservice" target="back-end-development">Timestamp</a>
+                        <a href="./request header parser microservice" target="back-end-development">Request Header Parser</a>
+                        <a href="./url shortener microservice" target="back-end-development">URL Shortener</a>
+                        <a href="./exercise tracker microservice" target="back-end-development">Exercise Tracker</a>
+                        <a href="./file metadata microservice" target="back-end-development">File Metadata</a>
                     </footer>
                 </article>
                 <article>
@@ -182,16 +197,18 @@
                         Locally Tested <abbr title="Progressive Web App">PWA</abbr>
                         s
                         
+                    
+                    
                     </h3>
                     <banana-overlay>
                         <iframe src="./metric-imperial converter" title="Quality Assurance Project" name="quality-assurance" width="240" height="240"></iframe>
                     </banana-overlay>
                     <footer>
-                            <a href="./metric-imperial converter" target="quality-assurance">Metric-Imperial Converter</a>
-                            <a href="./issue tracker" target="quality-assurance">Issue Tracker</a>
-                            <a href="./personal library" target="quality-assurance">Personal Library</a>
-                            <a href="./sudoku solver" target="quality-assurance">Sudoku Solver</a>
-                            <a href="./american british translaotr" target="quality-assurance">American British Translator</a>
+                        <a href="./metric-imperial converter" target="quality-assurance">Metric-Imperial Converter</a>
+                        <a href="./issue tracker" target="quality-assurance">Issue Tracker</a>
+                        <a href="./personal library" target="quality-assurance">Personal Library</a>
+                        <a href="./sudoku solver" target="quality-assurance">Sudoku Solver</a>
+                        <a href="./american british translaotr" target="quality-assurance">American British Translator</a>
                     </footer>
                 </article>
                 <section>
