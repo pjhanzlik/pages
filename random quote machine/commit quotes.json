@@ -1,0 +1,42 @@
+[
+    [
+        "subject": "2021-11-07T07:44:12-06:00",
+        "body": "iframes with external links need target blank",
+    ],
+    [
+        "subject": "2021-11-06T17:05:58-05:00",
+        "body": "Card style tweaks",
+    ],
+    [
+        "subject": "2021-11-06T07:22:12-05:00",
+        "body": "woops, need to remove old gitlab dir",
+    ],
+    [
+        "subject": "2021-11-06T07:19:30-05:00",
+        "body": "remove logo links, use excalidraw colors",
+    ],
+    [
+        "subject": "2021-11-05T13:40:15-05:00",
+        "body": "scale homepage width to sub-200px",
+    ],
+    [
+        "subject": "2021-11-04T22:22:22+01:00",
+        "body": "Update 'README.md'",
+    ],
+    [
+        "subject": "2021-11-04T22:22:00+01:00",
+        "body": "Add 'README.md'",
+    ],
+    [
+        "subject": "2021-11-04T22:04:14+01:00",
+        "body": "Add 'LICENSE'",
+    ],
+    [
+        "subject": "2021-11-04T14:15:50-05:00",
+        "body": "Codeberg does not like apostrephes in filenames",
+    ],
+    [
+        "subject": "2021-11-04T13:38:38-05:00",
+        "body": "Prepare for codeburg migration",
+    ]
+]
