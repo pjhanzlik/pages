@@ -6,9 +6,6 @@
         <title>Paul Hanzlik</title>
         <meta name="description" content="Wonderfully insane person">
         <link rel="icon" type="image/svg+xml" href="./happy emoji portrait.svg">
-        <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
-        <link rel="manifest" href="/manifest.json">
-        <meta name="theme-color" content="#ffffff">
         <style>
             body {
                 background-color: #f8f9fa;
@@ -18,9 +15,17 @@
                 font-size: 1.75em;
                 text-align: center;
                 display: grid;
-                min-height: 100vh;
                 align-content: space-between;
                 gap: 32px;
+            }
+
+            fullscreen-button::part(button) {
+                background-color: #a61e4d;
+                color: #fff0f6;
+                border-radius: 2px;
+                font-weight: bold;
+                border: none;
+                padding: 2px;
             }
 
             a {
@@ -43,10 +48,6 @@
                 color: #e3fafc;
             }
 
-            a:focus {
-                filter: contrast(150%);
-            }
-
             body > footer, body > header {
                 background-color: #f1f3f5;
                 display: flex;
@@ -59,6 +60,11 @@
                 box-shadow: 0 0 4px #ced4da;
             }
 
+            body > footer {
+                min-height: 95vh;
+                align-content: start;
+            }
+
             body > header > nav {
                 display: flex;
                 flex-flow: row wrap;
@@ -67,21 +73,21 @@
                 gap: 0.75rem;
             }
 
-            h1,h2,h3 {
+            h1,h2, fieldset {
                 margin: 0;
             }
 
-            main article {
-                background-color: #f1f3f5;
-                display: grid;
+            main fieldset {
+                display: flex;
+                flex-wrap: wrap;
+                max-width: 15rem;
+                justify-content: center;
+                justify-items: center;
                 gap: 12px;
-                padding: 16px 2px;
+                border: none;
+                padding: 12px 0 0 0;
                 align-items: start;
-                grid-auto-columns: minmax(auto, 15rem);
                 align-content: space-around;
-                border-radius: 4px;
-                box-shadow: 0 0 8px #ced4da;
-
             }
 
             footer, main section {
@@ -91,51 +97,39 @@
                 justify-content: center;
             }
 
-            article > footer > a {
-                font-size: 1rem;
+            legend {
                 font-weight: bold;
             }
 
-            article > footer > a:nth-of-type(5n+1) {
+            fieldset > a:any-link {
+                font-size: 1rem;
+                font-weight: bold;
                 background-color: #087f5b;
                 color: #e6fcf5;
-            }
-
-            article > footer > a:nth-of-type(5n+2) {
-                background-color: #2b8a3e;
-                color: #ebfbee;
-            }
-
-            article > footer > a:nth-of-type(5n+3) {
-                background-color: #5c940d;
-                color: #f4fce3;
-            }
-
-            article > footer > a:nth-of-type(5n+4) {
-                background-color: #e67700;
-                color: #fff9db;
-            }
-
-            article > footer > a:nth-of-type(5n) {
-                background-color: #d9480f;
-                color: #fff4e6;
             }
 
             main section {
                 gap: 2em;
             }
 
-            footer {
-                gap: 0.75em;
-            }
-
             iframe {
                 border: none;
                 background-color: #ced4da;
                 width: 100%;
+                height: 100%;
                 border-radius: 1rem;
             }
         </style>
+        <!--         <script type="module">
+            
+        import FullscreenButton from "./FullscreenButton.js";
+        if (customElements) {
+                if (document.fullscreenEnabled) {
+                        customElements.define("fullscreen-button", FullscreenButton);
+                }
+        }
+        
+        </script> -->
     </head>
     <body>
         <header>
@@ -150,75 +144,62 @@
                 <p>Insert explanation of website design philosophy here</p>
             </header>
             <section>
-                <article>
-                    <h3>Responsive CSS</h3>
+                <fieldset>
+                    <legend>Responsive CSS</legend>
                     <banana-overlay>
-                        <iframe src="./tribute page" title="Responsive Web Style Project" name="responsive-web-design" width="240" height="240"></iframe>
+                        <iframe title="Responsive Web Style Project" name="responsive-web-design" width="240" height="240"></iframe>
                     </banana-overlay>
-                    <footer>
-                        <a href="./tribute page" target="responsive-web-design">Tribute Page</a>
-                        <a href="./survey form" target="responsive-web-design">Survey Form</a>
-                        <a href="./product landing page" target="responsive-web-design">Product Page</a>
-                        <a href="./technical documentation page" target="responsive-web-design">Web Documentation</a>
-                        <a href="./" target="responsive-web-design">Personal Portfolio</a>
-                    </footer>
-                </article>
-                <article>
-                    <h3>Web Components</h3>
+                    <a href="./tribute page" target="responsive-web-design">Tribute Page</a>
+                    <a href="./survey form" target="responsive-web-design">Survey Form</a>
+                    <a href="./product landing page" target="responsive-web-design">Product Page</a>
+                    <a href="./technical documentation page" target="responsive-web-design">Web Documentation</a>
+                    <a href="./" target="responsive-web-design">Personal Portfolio</a>
+                </fieldset>
+                <fieldset>
+                    <legend>Web Components</legend>
                     <banana-overlay>
-                        <iframe src="./random quote machine" title="Front End Development Libary Project" name="front-end-development-libraries" width="240" height="240"></iframe>
+                        <iframe title="Front End Development Libary Project" name="front-end-development-libraries" width="240" height="240"></iframe>
                     </banana-overlay>
-                    <footer>
-                        <a href="./random quote machine" target="front-end-development-libraries">Random Quote Machine</a>
-                        <a href="./markdown previewer" target="front-end-development-libraries">Markdown Previewer</a>
-                        <a href="./drum machine" target="front-end-development-libraries">Drum Machine</a>
-                        <a href="./javascript calculator" target="front-end-development-libraries">JavaScript Calculator</a>
-                        <a href="./25 + 5 clock" target="front-end-development-libraries">25 + 5 Clock</a>
-                    </footer>
-                </article>
-                <article>
-                    <h3>Scalable Vector Graphics
-                    </h3>
+                    <a href="./random quote machine" target="front-end-development-libraries">Random Quote Machine</a>
+                    <a href="./markdown previewer" target="front-end-development-libraries">Markdown Previewer</a>
+                    <a href="./drum machine" target="front-end-development-libraries">Drum Machine</a>
+                    <a href="./javascript calculator" target="front-end-development-libraries">JavaScript Calculator</a>
+                    <a href="./25 + 5 clock" target="front-end-development-libraries">25 + 5 Clock</a>
+                </fieldset>
+                <fieldset>
+                    <legend>Scalable Vector Graphics</legend>
                     <banana-overlay>
-                        <iframe src="./bar chart" title="Data Visualization Project" name="data-visualization" width="240" height="240"></iframe>
+                        <iframe title="Data Visualization Project" name="data-visualization" width="240" height="240"></iframe>
                     </banana-overlay>
-                    <footer>
-                        <a href="./bar chart" target="data-visualization">Bar Chart</a>
-                        <a href="./scatterplot graph" target="data-visualization">Scatterplot Graph</a>
-                        <a href="./head map" target="data-visualization">Heat Map</a>
-                        <a href="./choropleth map" target="data-visualization">Choropleth Map</a>
-                        <a href="./treemap diagram" target="data-visualization">Treemap Diagram</a>
-                    </footer>
-                </article>
-                <article>
-                    <h3>Application Programming Interfaces
-                    </h3>
+                    <a href="./bar chart" target="data-visualization">Bar Chart</a>
+                    <a href="./scatterplot graph" target="data-visualization">Scatterplot Graph</a>
+                    <a href="./head map" target="data-visualization">Heat Map</a>
+                    <a href="./choropleth map" target="data-visualization">Choropleth Map</a>
+                    <a href="./treemap diagram" target="data-visualization">Treemap Diagram</a>
+                </fieldset>
+                <fieldset>
+                    <legend>Application Programming Interfaces</legend>
                     <banana-overlay>
-                        <iframe src="./timestamp microservice" title="Back End Development Project" name="back-end-development" width="240" height="240"></iframe>
+                        <iframe title="Back End Development Project" name="back-end-development" width="240" height="240"></iframe>
                     </banana-overlay>
-                    <footer>
-                        <a href="./timestamp microservice" target="back-end-development">Timestamp</a>
-                        <a href="./request header parser microservice" target="back-end-development">Request Header Parser</a>
-                        <a href="./url shortener microservice" target="back-end-development">URL Shortener</a>
-                        <a href="./exercise tracker microservice" target="back-end-development">Exercise Tracker</a>
-                        <a href="./file metadata microservice" target="back-end-development">File Metadata</a>
-                    </footer>
-                </article>
-                <article>
-                    <h3>Progressive Web Apps
-                    </h3>
+                    <a href="./timestamp microservice" target="back-end-development">Timestamp</a>
+                    <a href="./request header parser microservice" target="back-end-development">Request Header Parser</a>
+                    <a href="./url shortener microservice" target="back-end-development">URL Shortener</a>
+                    <a href="./exercise tracker microservice" target="back-end-development">Exercise Tracker</a>
+                    <a href="./file metadata microservice" target="back-end-development">File Metadata</a>
+                </fieldset>
+                <fieldset>
+                    <legend>Progressive Web Apps</legend>
                     <banana-overlay>
-                        <iframe src="./metric-imperial converter" title="Quality Assurance Project" name="quality-assurance" width="240" height="240"></iframe>
+                        <iframe title="Quality Assurance Project" name="quality-assurance" width="240" height="240"></iframe>
                     </banana-overlay>
-                    <footer>
-                        <a href="./metric-imperial converter" target="quality-assurance">Metric-Imperial Converter</a>
-                        <a href="./issue tracker" target="quality-assurance">Issue Tracker</a>
-                        <a href="./personal library" target="quality-assurance">Personal Library</a>
-                        <a href="./sudoku solver" target="quality-assurance">Sudoku Solver</a>
-                        <a href="./american british translaotr" target="quality-assurance">American British Translator</a>
-                    </footer>
-                </article>
-                <section>
+                    <a href="./metric-imperial converter" target="quality-assurance">Metric-Imperial Converter</a>
+                    <a href="./issue tracker" target="quality-assurance">Issue Tracker</a>
+                    <a href="./personal library" target="quality-assurance">Personal Library</a>
+                    <a href="./sudoku solver" target="quality-assurance">Sudoku Solver</a>
+                    <a href="./american british translator" target="quality-assurance">American British Translator</a>
+                </fieldset>
+            </section>
         </main>
         <footer id="foot">
             <h2>My code profiles</h2>
