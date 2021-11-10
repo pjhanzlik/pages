@@ -83,7 +83,10 @@
                 max-width: 30em;
             }
 
-            q::before, q::after, blockquote::before, blockquote::after {
+            q::before {
+                content: '"';
+            }
+            q::after {
                 content: '"';
             }
         </style>
@@ -129,9 +132,9 @@
             </dt>
             <dd>
                 JoCat states
-        <q>we don't want to use Spork, because Spork will just make this easy mode.</q>
+        <q>we don't want to use Spork, because Spork will just make this easy mode</q>.
                 He proclaims
-        <q>we know Spork can just snap this entire gym.</q>
+        <q>we know Spork can just snap this entire gym</q>.
             </dd>
             <dt>
                 <a href="https://youtu.be/VC7lRZTxDng?t=1309" rel="noopener" target="_blank">
