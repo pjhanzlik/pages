@@ -52,6 +52,7 @@
         :target {
             filter: invert(100%);
         }
+
         body {
             min-height: 100vh;
         }
@@ -63,6 +64,7 @@
             justify-content: space-around;
             gap: 0.75rem;
         }
+
         body>header {
             padding: max(env(safe-area-inset-top), 4px) 0;
         }
@@ -71,14 +73,15 @@
             padding: max(env(safe-area-inset-bottom), 4px) 0;
         }
 
-        fieldset {
-            border: none;
-            padding: 0.5rem;
+        dl {
+            display: grid;
+            gap: 8px;
+            margin: 0;
         }
 
-        fieldset p {
+        dd {
             font-size: 0.8em;
-            margin: 0.8rem 0 0 0;
+            margin: 0;
         }
 
         h1,
@@ -87,7 +90,8 @@
             margin: 0;
         }
 
-        h2, h3 {
+        h2,
+        h3 {
             flex: 100%;
         }
 
@@ -110,13 +114,32 @@
             flex: 15rem;
         }
 
+        fieldset {
+            border: none;
+            align-items: center;
+            padding: 0;
+            gap: 6px;
+            display: grid;
+            gap: 4px;
+            justify-items: center;
+            grid-template-columns: auto min-content min-content auto;
+        }
+
         legend {
+            float: left;
+            flex: 100%;
+            grid-column: span 4;
+        }
+
+        legend,
+        dt {
             font-weight: bold;
             font-size: 1em;
         }
-        
+
         main>header,
-        section {
+        main>section,
+        nav {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -124,11 +147,24 @@
             gap: 16px;
         }
 
-        a[target="banana-phone"] {
+        a[target="preview"] {
             font-size: 1rem;
             font-weight: bold;
             background-color: #087f5b;
             color: #e6fcf5;
+        }
+
+        label {
+            background-color: #a61e4d;
+            font-size: 1rem;
+            border-radius: 4px 16px 16px 4px;
+            padding: 4px;
+            color: #fff0f6;
+            justify-self: end;
+        }
+
+        input {
+            justify-self: start;
         }
 
         iframe {
@@ -137,88 +173,102 @@
             border-radius: 1rem;
             width: 100%;
             height: 100%;
+            box-shadow: 0 0 4px #ced4da;
             max-width: 15rem;
+            border: auto;
+            flex: 100%;
+            grid-column: span 4;
+        }
+
+        #grayscale:checked~iframe {
+            filter: grayscale(100%);
+        }
+
+        #blur:checked~iframe {
+            filter: blur(2px);
+        }
+
+        button {
+            grid-column: span 2;
+        }
+
+        #blur:checked~#grayscale:checked~iframe {
+            filter: blur(2px) grayscale(100%);
         }
     </style>
-    <script type="module">   
-    </script>
 </head>
 
 <body>
     <header>
         <h1>Hi, I'm Paul!</h1>
-        <nav>
-            <a href="#foot">Work with me</a>
-        </nav>
+        <a href="#foot">Work with me</a>
     </header>
     <main>
         <header>
-            <h2>My HTML5 Prototypes</h2>
+            <h2>On Accessible HTML5</h2>
+            <dl>
+                <dt>Simple tests anyone can do</dt>
+                <dd>Blur your vision by squinting</dd>
+                <dd>Read text aloud like a screen reader</dd>
+                <dd>Navigate without CSS and JavaScript enabled</dd>
+            </dl>
             <fieldset>
-                <legend>Accessibility Tests</legend>
-                <blur-switch>
-                    <p>Squint for blurry vision</p>
-                </blur-switch>
-                <fullscreen-switch>
-                    <p>Open new tabs for fullscreen</p>
-                </fullscreen-switch>
-                <text-to-speech-switch>
-                    <p>Read text aloud for screen reader</p>
-                </text-to-speech-switch>
-                <grayscale-switch>
-                    <p>Lower display brightness for color blindness</p>
-                </grayscale-switch>
+                <legend>Small Screen Simulator</legend>
+                <label for="blur">Blur</label>
+                <input id="blur" type="checkbox" role="switch">
+                <label for="grayscale">Grayscale</label>
+                <input id="grayscale" type="checkbox" role="switch">
+                <iframe srcdoc="<head><title>Instructive Placeholder</title><style> body { display: grid; min-height: 100vh; margin: 0; align-items: center;} p {margin: 0; text-align: center; font-size: 1.1em; font-weight: bold; color: #343a40; font-family: sans-serif;}</style></head><body><p>Click an example link below to render here</p><p>Open link in new tab to see example fullscreen</p></body>" title="Small Screen" name="preview" width="240" height="180"></iframe>
             </fieldset>
-            <iframe srcdoc="<body style='text-align: center; font-size: 1.1em; font-weight: bold; color: #343a40; font-family: sans-serif;'>Click a prototype link below to render here</body>" title="Prototype Preview" name="banana-phone" width="240" height="180"></iframe>
         </header>
         <section>
-            <h3>Responsive CSS</h3>
-            <a href="./tribute page" target="banana-phone">Tribute Page</a>
-            <a href="./survey form" target="banana-phone">Survey Form</a>
-            <a href="./product landing page" target="banana-phone">Product Page</a>
-            <a href="./technical documentation page" target="banana-phone">Web Documentation</a>
-            <a href="./" target="banana-phone">Personal Portfolio</a>
+            <h3>No Script Sites</h3>
+            <a href="./tribute page" target="preview">Tribute Page</a>
+            <a href="./survey form" target="preview">Survey Form</a>
+            <a href="./product landing page" target="preview">Product Page</a>
+            <a href="./technical documentation page" target="preview">Web Documentation</a>
+            <a href="./" target="preview">Personal Portfolio</a>
         </section>
         <section>
             <h3>Web Components</h3>
-            <a href="./random quote machine" target="banana-phone">Random Quote Machine</a>
-            <a href="./markdown previewer" target="banana-phone">Markdown Previewer</a>
-            <a href="./drum machine" target="banana-phone">Drum Machine</a>
-            <a href="./javascript calculator" target="banana-phone">JavaScript Calculator</a>
-            <a href="./25 + 5 clock" target="banana-phone">25 + 5 Clock</a>
+            <a href="./random quote machine" target="preview">Random Quote Machine</a>
+            <a href="./markdown previewer" target="preview">Markdown Previewer</a>
+            <a href="./drum machine" target="preview">Drum Machine</a>
+            <a href="./javascript calculator" target="preview">JavaScript Calculator</a>
+            <a href="./25 + 5 clock" target="preview">25 + 5 Clock</a>
         </section>
         <section>
             <h3>Scalable Vector Graphics</h3>
-            <a href="./bar chart" target="banana-phone">Bar Chart</a>
-            <a href="./scatterplot graph" target="banana-phone">Scatterplot Graph</a>
-            <a href="./head map" target="banana-phone">Heat Map</a>
-            <a href="./choropleth map" target="banana-phone">Choropleth Map</a>
-            <a href="./treemap diagram" target="banana-phone">Treemap Diagram</a>
+            <a href="./bar chart" target="preview">Bar Chart</a>
+            <a href="./scatterplot graph" target="preview">Scatterplot Graph</a>
+            <a href="./head map" target="preview">Heat Map</a>
+            <a href="./choropleth map" target="preview">Choropleth Map</a>
+            <a href="./treemap diagram" target="preview">Treemap Diagram</a>
         </section>
         <section>
             <h3>Application Programming Interfaces</h3>
-            <a href="./timestamp microservice" target="banana-phone">Timestamp</a>
-            <a href="./request header parser microservice" target="banana-phone">Request Header Parser</a>
-            <a href="./url shortener microservice" target="banana-phone">URL Shortener</a>
-            <a href="./exercise tracker microservice" target="banana-phone">Exercise Tracker</a>
-            <a href="./file metadata microservice" target="banana-phone">File Metadata</a>
+            <a href="./timestamp microservice" target="preview">Timestamp</a>
+            <a href="./request header parser microservice" target="preview">Request Header Parser</a>
+            <a href="./url shortener microservice" target="preview">URL Shortener</a>
+            <a href="./exercise tracker microservice" target="preview">Exercise Tracker</a>
+            <a href="./file metadata microservice" target="preview">File Metadata</a>
         </section>
         <section>
             <h3>Progressive Web Apps</h3>
-            <a href="./metric-imperial converter" target="banana-phone">Metric-Imperial Converter</a>
-            <a href="./issue tracker" target="banana-phone">Issue Tracker</a>
-            <a href="./personal library" target="banana-phone">Personal Library</a>
-            <a href="./sudoku solver" target="banana-phone">Sudoku Solver</a>
-            <a href="./american british translator" target="banana-phone">American British Translator</a>
+            <a href="./metric-imperial converter" target="preview">Metric-Imperial Converter</a>
+            <a href="./issue tracker" target="preview">Issue Tracker</a>
+            <a href="./personal library" target="preview">Personal Library</a>
+            <a href="./sudoku solver" target="preview">Sudoku Solver</a>
+            <a href="./american british translator" target="preview">American British Translator</a>
         </section>
     </main>
     <footer id="foot">
-        <section>
+        <nav>
             <h2>My code profiles</h2>
             <a rel="noopener" target="_blank" href="https://codeberg.org/pjhanzlik">Codeberg</a>
             <a rel="noopener" target="_blank" href="https://gitlab.com/pjhanzlik">GitLab</a>
             <a rel="noopener" target="_blank" href="https://github.com/pjhanzlik">GitHub</a>
-        </section>
+        </nav>
         <p>Unless otherwise indicated, code I own is licensed MIT and non-code is licensed CC BY 4.0</p>
     </footer>
 </body>
