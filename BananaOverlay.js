@@ -36,11 +36,15 @@ export default class extends HTMLElement {
 
     static {
       this.initialTemplate = document.createElement("template");
-      this.initialTemplate.innerHTML = `<slot></slot>
-      <input role="switch" type="checkbox" part="switch blur" id="blur"></input>
-      <label part="blur label" for="blur">Blur</label>
-      <input role="switch" type="checkbox" part="switch grayscale" id="grayscale"></input>
-      <label part="grayscale label" for="grayscale">Grayscale</label>
-      <button part="fullscreen button" type="button" id="fullscreen">Fullscreen</button>`
+      this.initialTemplate.innerHTML = `<fieldset>
+    <legend>Simulate</legend>
+    <input role="switch" type="checkbox" part="switch blur" id="blur">
+    <label part="blur label" for="blur">Blur</label>
+    <input role="switch" type="checkbox" part="switch grayscale" id="grayscale">
+    <label part="grayscale label" for="grayscale">Grayscale</label>
+    <button part="fullscreen button" type="button" id="fullscreen">Fullscreen</button>
+    <button part="audio button" type="button" id="audio" disabled>Text To Speech</button>
+</fieldset>
+<slot></slot>`
     }
 }
