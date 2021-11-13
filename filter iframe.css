@@ -1,0 +1,27 @@
+#grayscale:checked~iframe {
+    filter: grayscale(100%);
+}
+
+#blur:checked~iframe {
+    filter: blur(2px);
+}
+
+#blur:checked~#grayscale:checked~iframe {
+    filter: blur(2px) grayscale(100%);
+}
+
+#blur:checked~:target {
+    filter: invert(100%) blur(2px);
+}
+
+#grayscale:checked~:target {
+    filter: invert(100%) grayscale(100%);
+}
+
+#blur:checked~#grayscale:checked~:target {
+    filter: invert(100%) blur(2px) grayscale(100%);
+}
+
+#blur, #grayscale, [for="grayscale"], [for="blur"] {
+    display: revert !important;
+}

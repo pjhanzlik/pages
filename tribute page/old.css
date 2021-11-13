@@ -1,0 +1,87 @@
+html {
+    display: grid;
+    justify-items: center;
+    font-size: 1.5em;
+}
+
+body, h2, h1, dl, dd, blockquote, figure, p {
+    margin: 0;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.75em 0.5em;
+    font-size: 1.1em;
+}
+
+h2 {
+    display: grid;
+    font-size: 1.1em;
+}
+
+body {
+    color: silver;
+    line-height: 1.75em;
+    text-align: center;
+    background-color: #1a1a1a;
+    display: grid;
+    font-family: sans-serif;
+    gap: 1.25em;
+    padding: 1em 0;
+    justify-items: center;
+    max-width: 38em;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    text-align: left;
+}
+
+p:last-child {
+    font-weight: bold;
+    max-width: 33.5227272727em;
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 100%;
+    filter: grayscale(90%);
+}
+
+a:link {
+    color: steelblue;
+}
+
+a:visited {
+    color: mediumslateblue;
+}
+
+blockquote {
+    font-style: oblique;
+    text-align: left;
+}
+
+blockquote ~ figcaption {
+    text-align: right;
+}
+
+figure {
+    max-width: 30em;
+}
+
+q::before {
+    content: '"';
+}
+
+q::after {
+    content: '"';
+}
+
+dt>q::before,dt>q::after {
+    content: none;
+}

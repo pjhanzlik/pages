@@ -1,0 +1,7 @@
+:target {
+    filter: invert(100%);
+}
+
+.target.instruction {
+    display: revert !important;
+}
