@@ -1,7 +1,6 @@
 :root {
     --inline-spread: 8px;
     --block-spread: 12px;
-    --section-spread: 16px;
     --glyph-color: #343a40;
     --space-color: #f8f9fa;
 }
@@ -35,11 +34,19 @@ body {
     font-family: cursive;
     color: var(--glyph-color);
     background-color: var(--space-color);
-    gap: var(--section-spread);
-/*    min-height, min-width seems bad for grid  */
     min-height: 100vh;
     min-width: 100vw;
     text-align: center;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 16px 3rem;
+    grid-auto-columns: minmax(15rem,auto);
+    grid-auto-flow: column;
+}
+
+body>:is(:first-child,:last-child) {
+    grid-column: 1 / -1;
 }
 
 header,footer,main,section {
@@ -62,16 +69,4 @@ mark {
 
 :target {
     filter: drop-shadow(0 0 1px var(--glyph-color));
-}
-
-@media (min-width: 32em) {
-    body {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        gap: 5rem;
-    }
-    body>:is(:first-child,:last-child) {
-        grid-column: span 2;
-    }
 }
