@@ -5,19 +5,12 @@
         <title>Pop Quiz</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Test your knowledge of random factoids">
-        <style>
-            body {
-                font-size: 1.2em;
-                font-family: sans-serif;
-                background-color: #ddd;
-                color: #222;
-            }
-        </style>
+        <link rel="stylesheet" media="print, screen" href="/graphite.css">
     </head>
     <body>
+        <form>
         <h1>Wikipedia Pop Quiz</h1>
         <p>Remember to take all answers here with a grain of salt</p>
-        <form>
             <label for="email">
                 An email address which you could log into using the password <q>eh</q>
                 in 1999
@@ -25,12 +18,10 @@
             </label>
             <input type="email" name="email" id="email" required pattern="@hotmail.com$">
             <output for="email">
-                <figure>
+                <details>
+                    <summary>Outlook.com MSN Hotmail Security Issues</summary>
                     <blockquote cite="https://en.wikipedia.org/w/index.php?title=Outlook.com&oldid=1049555097#cite_note-eh-18">In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password 'eh'. At the time it was called "the most widespread security incident in the history of the Web".</blockquote>
-                    <figcaption>
-                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Outlook.com#Security_issues">Outlook.com MSN Hotmail Security Issues</a>
-                    </figcaption>
-                </figure>
+                </details>
             </output>
             <label for="number">A UPC-A barcode consists of how many digits</label>
             <input min="10" max="13" pattern="12" type="number" name="number" id="number" required>

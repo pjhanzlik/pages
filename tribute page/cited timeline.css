@@ -1,0 +1,4 @@
+dt>q::before,
+dt>q::after {
+    content: none;
+}
