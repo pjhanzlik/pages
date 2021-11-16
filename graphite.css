@@ -1,6 +1,7 @@
 :root {
     --inline-spread: 8px;
     --block-spread: 12px;
+    --section-spread: 16px;
     --glyph-color: #343a40;
     --space-color: #f8f9fa;
 }
@@ -37,16 +38,7 @@ body {
     min-height: 100vh;
     min-width: 100vw;
     text-align: center;
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    gap: 16px 3rem;
-    grid-auto-columns: minmax(15rem,auto);
-    grid-auto-flow: column;
-}
-
-body>:is(:first-child,:last-child) {
-    grid-column: 1 / -1;
+    gap: var(--section-spread);
 }
 
 header,footer,main,section {
