@@ -1,6 +1,6 @@
 :root {
     --inline-spread: 1rem;
-    --block-spread: 2rem;
+    --block-spread: 1.5rem;
     --section-spread: 4rem;
     --glyph-color: #343a40;
     --space-color: #f8f9fa;
