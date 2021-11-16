@@ -1,7 +1,7 @@
 :root {
-    --inline-spread: 1rem;
-    --block-spread: 1.5rem;
-    --section-spread: 4rem;
+    --inline-spread: 0.5rem;
+    --block-spread: 1rem;
+    --section-spread: 3rem;
     --glyph-color: #343a40;
     --space-color: #f8f9fa;
 }
@@ -60,5 +60,5 @@ mark {
 }
 
 :target {
-    filter: drop-shadow(0 0 1px var(--glyph-color));
+    filter: drop-shadow(0 0 0.0625rem var(--glyph-color));
 }
