@@ -8,6 +8,17 @@
     <meta name="description" content="Here there be HTML">
     <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
     <link rel="stylesheet" media="print, screen" href="/graphite.css">
+    <style>
+#blur:checked ~ [name=small-screen] {
+    filter: blur(2px);
+}
+#grayscale:checked ~ [name=small-screen] {
+    filter: grayscale(100%);
+}
+#blur:checked ~ #grayscale:checked ~ [name=small-screen] {
+    filter: blur(2px) grayscale(100%);
+}
+    </style>
 </head>
 
 <body class="split">
@@ -20,64 +31,67 @@
     </header>
     <aside class="one">
         <h2 id="simulator">Sample some prototypes</h2>
-        <label for="blur" style="display: none">Blur</label>
-        <input id="blur" style="display: none" type="checkbox" role="switch">
-        <label for="grayscale" style="display: none">Grayscale</label>
-        <input id="grayscale" style="display: none" type="checkbox" role="switch">
-        <iframe
-            style="max-width: var(--minimum-width, 15rem);"
-            srcdoc='<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Instructive Placeholder</title><link rel="stylesheet" media="screen, print" href="/graphite.css"></head><body><p>Project links open up on this small iframe</p><p>Open a new tab for fullscreen view</p></body></html>'
-            title="Small Screen" name="preview" width="240" height="140"></iframe>
+        <fieldset>
+            <legend>Inspect for</legend>
+            <label for="blur">Blur</label>
+            <input id="blur" type="checkbox">
+            <label for="grayscale">Grayscale</label>
+            <input id="grayscale" type="checkbox">
+            <iframe
+                style="max-width: var(--minimum-width, 15rem); grid-column: span 2;"
+                srcdoc='<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Instructive Placeholder</title><link rel="stylesheet" media="screen, print" href="/graphite.css"></head><body><p>Project links open up on this small iframe</p><p>Open a new tab for fullscreen view</p></body></html>'
+                title="Small Screen" name="small-screen" width="240" height="140"></iframe>
+        </fieldset>
     </aside>
     <main class="two">
         <section>
             <h3 id="responsive-web-design">No Script Sites</h3>
             <nav aria-labelled-by="responsive-web-design">
-                <a href="./tribute page" target="preview">Tribute Page</a>
-                <a href="./survey form" target="preview">Survey Form</a>
-                <a href="./product landing page" target="preview">Product Page</a>
-                <a href="./technical documentation page" target="preview">Web Documentation</a>
-                <a href="./" target="preview">Personal Portfolio</a>
+                <a href="./tribute page" target="small-screen">Tribute Page</a>
+                <a href="./survey form" target="small-screen">Survey Form</a>
+                <a href="./product landing page" target="small-screen">Product Page</a>
+                <a href="./technical documentation page" target="small-screen">Web Documentation</a>
+                <a href="./" target="small-screen">Personal Portfolio</a>
             </nav>
         </section>
         <section>
             <h3 id="front-end-development-libraries">Web Components</h3>
             <nav aria-labelled-by="front-end-development-libraries">
-                <a href="./random quote machine" target="preview">Random Quote Machine</a>
-                <a href="./markdown previewer" target="preview">Markdown Previewer</a>
-                <a href="./drum machine" target="preview">Drum Machine</a>
-                <a href="./javascript calculator" target="preview">JavaScript Calculator</a>
-                <a href="./25 + 5 clock" target="preview">25 + 5 Clock</a>
+                <a href="./random quote machine" target="small-screen">Random Quote Machine</a>
+                <a href="./markdown previewer" target="small-screen">Markdown Previewer</a>
+                <a href="./drum machine" target="small-screen">Drum Machine</a>
+                <a href="./javascript calculator" target="small-screen">JavaScript Calculator</a>
+                <a href="./25 + 5 clock" target="small-screen">25 + 5 Clock</a>
             </nav>
         </section>
         <section>
             <h3 id="data-visualization">Scalable Vector Graphics</h3>
             <nav aria-labelled-by="data-visualization">
-                <a href="./bar chart" target="preview">Bar Chart</a>
-                <a href="./scatterplot graph" target="preview">Scatterplot Graph</a>
-                <a href="./head map" target="preview">Heat Map</a>
-                <a href="./choropleth map" target="preview">Choropleth Map</a>
-                <a href="./treemap diagram" target="preview">Treemap Diagram</a>
+                <a href="./bar chart" target="small-screen">Bar Chart</a>
+                <a href="./scatterplot graph" target="small-screen">Scatterplot Graph</a>
+                <a href="./head map" target="small-screen">Heat Map</a>
+                <a href="./choropleth map" target="small-screen">Choropleth Map</a>
+                <a href="./treemap diagram" target="small-screen">Treemap Diagram</a>
             </nav>
         </section>
         <section>
             <h3 id="back-end-development-and-apis">Application Programming Interfaces</h3>
             <nav aria-labelled-by="back-end-development-and-apis">
-                <a href="./timestamp microservice" target="preview">Timestamp</a>
-                <a href="./request header parser microservice" target="preview">Request Header Parser</a>
-                <a href="./url shortener microservice" target="preview">URL Shortener</a>
-                <a href="./exercise tracker microservice" target="preview">Exercise Tracker</a>
-                <a href="./file metadata microservice" target="preview">File Metadata</a>
+                <a href="./timestamp microservice" target="small-screen">Timestamp</a>
+                <a href="./request header parser microservice" target="small-screen">Request Header Parser</a>
+                <a href="./url shortener microservice" target="small-screen">URL Shortener</a>
+                <a href="./exercise tracker microservice" target="small-screen">Exercise Tracker</a>
+                <a href="./file metadata microservice" target="small-screen">File Metadata</a>
             </nav>
         </section>
         <section>
             <h3 id="quality-assurance">Progressive Web Apps</h3>
             <nav aria-labelled-by="quality-assurance">
-                <a href="./metric-imperial converter" target="preview">Metric-Imperial Converter</a>
-                <a href="./issue tracker" target="preview">Issue Tracker</a>
-                <a href="./personal library" target="preview">Personal Library</a>
-                <a href="./sudoku solver" target="preview">Sudoku Solver</a>
-                <a href="./american british translator" target="preview">American British Translator</a>
+                <a href="./metric-imperial converter" target="small-screen">Metric-Imperial Converter</a>
+                <a href="./issue tracker" target="small-screen">Issue Tracker</a>
+                <a href="./personal library" target="small-screen">Personal Library</a>
+                <a href="./sudoku solver" target="small-screen">Sudoku Solver</a>
+                <a href="./american british translator" target="small-screen">American British Translator</a>
             </nav>
         </section>
     </main>
