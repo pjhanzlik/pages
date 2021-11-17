@@ -32,7 +32,7 @@ address,nav {
 
 body {
     margin: env(safe-area-inset-top, unset) env(safe-area-inset-right, unset) env(safe-area-inset-bottom, unset) env(safe-area-inset-left, unset);
-    font-family: cursive, sans-serif;
+    font-family: cursive;
     color: var(--glyph-color);
     background-color: var(--space-color);
     min-height: 100vh;
