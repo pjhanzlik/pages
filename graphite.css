@@ -10,21 +10,13 @@ blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,p {
     margin: 0;
 }
 
-dt {
-    grid-column: 1;
-}
-
-dd {
-    grid-column: 2;
-}
-
 address,aside,body,header,footer,main,nav,section {
     display: flex;
     align-items: center;
 }
 
 blockquote {
-    text-align: justify;
+    font-style: italic;
 }
 
 aside,header,footer,section,main {
@@ -52,12 +44,7 @@ body>footer {
     align-self: start;
 }
 
-legend {
-    float: left;
-}
-
-legend {
-    grid-column: span 2;
+dt, legend {
     font-weight: bold;
 }
 
@@ -66,12 +53,8 @@ fieldset {
     align-items: center;
 }
 
-dl, fieldset {
+dl, fieldset, form {
     text-align: start;
-    display: grid;
-    justify-items: start;
-    grid-template-columns: auto 1fr;
-    gap: var(--inline-spread);
 }
 
 body {
