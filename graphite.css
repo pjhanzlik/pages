@@ -10,13 +10,21 @@ blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,p {
     margin: 0;
 }
 
+dt {
+    grid-column: 1;
+}
+
+dd {
+    grid-column: 2;
+}
+
 address,aside,body,header,footer,main,nav,section {
     display: flex;
     align-items: center;
 }
 
-blockquote::before {
-   content: open-quote;
+blockquote {
+    text-align: justify;
 }
 
 aside,header,footer,section,main {
@@ -54,11 +62,15 @@ legend {
 }
 
 fieldset {
+    padding: 0;
+    align-items: center;
+}
+
+dl, fieldset {
+    text-align: start;
     display: grid;
     justify-items: start;
     grid-template-columns: auto 1fr;
-    align-items: center;
-    padding: 0;
     gap: var(--inline-spread);
 }
 
@@ -67,8 +79,6 @@ body {
     font-family: cursive;
     color: var(--glyph-color);
     background-color: var(--space-color);
-    min-height: 100vh;
-    min-width: 100vw;
     text-align: center;
     gap: var(--section-spread);
 }
