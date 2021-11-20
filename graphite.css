@@ -6,7 +6,7 @@
     --space-color: #f8f9fa;
 }
 
-blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,p {
+blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,ol,p,ul {
     margin: 0;
 }
 
@@ -50,7 +50,6 @@ dt, legend {
 
 fieldset {
     padding: 0;
-    align-items: center;
 }
 
 dl, fieldset, form {
