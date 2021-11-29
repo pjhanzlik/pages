@@ -47,7 +47,7 @@ body>footer {
 }
 
 
-br~* {
+br+* {
     display: inline-block;
     margin-block-start: var(--commutative-spread);
 }
