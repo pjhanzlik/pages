@@ -1,7 +1,7 @@
 :root {
-    --inline-spread: 0.5rem;
-    --block-spread: 1rem;
-    --section-spread: 3rem;
+    --commutative-spread: 0.5rem;
+    --associative-spread: 1.5rem;
+    --distributive-spread: 4.5rem;
     --glyph-color: #343a40;
     --space-color: #f8f9fa;
 }
@@ -12,7 +12,6 @@ blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,ol,p,ul {
 
 address,aside,body,header,footer,main,nav,section {
     display: flex;
-    align-items: center;
 }
 
 blockquote {
@@ -29,7 +28,7 @@ address,body,nav {
 }
 
 address, nav {
-    gap: var(--inline-spread);
+    gap: var(--commutative-spread);
 }
 
 body>:is(header, footer) {
@@ -38,17 +37,28 @@ body>:is(header, footer) {
 
 body>header {
     align-self: end;
+    margin-block-start: var(--associative-spread);
 }
 
 body>footer {
     align-self: start;
+    margin-block-end: var(--associative-spread);
+
 }
 
-dt, legend {
+
+br~* {
+    display: inline-block;
+    margin-block-start: var(--commutative-spread);
+}
+
+
+
+dt, legend,legend>label {
     font-weight: bold;
 }
 
-fieldset {
+fieldset,button {
     padding: 0;
 }
 
@@ -56,26 +66,52 @@ dl, fieldset, form {
     text-align: start;
 }
 
+figcaption:first-child {
+    margin-block-end: var(--commutative-spread);
+}
+
+figcaption:last-child,li+li,dt+dt,dd+dd,option+option {
+    margin-block-start: var(--commutative-spread);
+}
+
+ol>li+li,dd+dt,dt+dd {
+    margin-block-start: var(--associative-spread);
+}
+
+[open]>summary,legend {
+    margin-block-end: var(--associative-spread);
+}
+
 body {
+    align-items: center;
     margin: env(safe-area-inset-top, unset) env(safe-area-inset-right, unset) env(safe-area-inset-bottom, unset) env(safe-area-inset-left, unset);
     font-family: cursive;
     color: var(--glyph-color);
     background-color: var(--space-color);
     text-align: center;
-    gap: var(--section-spread);
+    gap: var(--distributive-spread);
 }
 
-header,footer,main,section {
-    gap: var(--block-spread);
+aside,header,footer,main,section {
+    gap: var(--associative-spread);
 }
 
-:any-link {
-    color: currentColor;
+:any-link, button {
+    color: currentColor;;
     display: inline-block;
 }
 
-fieldset, iframe {
+blockquote,
+details {
+    max-width: fit-content;
+}
+
+fieldset, iframe,button {
     border: none;
+}
+
+button:active {
+    border-style: inset;
 }
 
 mark {
@@ -85,4 +121,26 @@ mark {
 
 :target {
     filter: drop-shadow(0 0 0.0625rem var(--glyph-color));
+}
+
+label {
+    font-weight: initial;
+}
+
+summary,button {
+    text-decoration: underline;
+}
+
+button {
+    background-color: inherit;
+}
+
+button,option {
+    font-family: inherit;
+    font-size: 1em;
+    text-align: inherit;
+}
+
+iframe {
+    display: block;
 }

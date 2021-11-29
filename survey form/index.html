@@ -6,172 +6,241 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Test your knowledge of random factoids">
         <link rel="stylesheet" media="print, screen" href="/graphite.css">
+        <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
+        <style>
+            :root {
+                --glyph-color: black;
+                --space-color: white;
+            }
+        </style>
     </head>
     <body>
         <header>
             <h1>Wikipedia Pop Quiz</h1>
-            <p>Remember to take all answers here with a grain of salt</p>
+            <p>Remember to take all answers with a grain of salt</p>
         </header>
         <main>
             <form>
                 <ol>
                     <li>
                         <fieldset>
-                            <legend><label for="email">
-                                What is an email address which you could log into using the password "eh" in 1999?
-                            </label></legend>
-                            <input name="email" type="email" id="email" required pattern=".+@hotmail.com$">
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Outlook.com&oldid=1049555097#Security_issues">In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password 'eh'. At the time it was called "the most widespread security incident in the history of the Web".</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Outlook.com">Outlook.com</a>
-                                        by
+                            <legend>
+                                <label for="email">What is an email address which you could log into using the password "eh" in 1999?</label>
+                            </legend>
+                            <dl>
+                                <dt>
+                                    <input name="email" type="email" id="email" required pattern=".+@hotmail.com$">
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Outlook.com&oldid=1049555097#Security_issues">In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password 'eh'. At the time it was called "the most widespread security incident in the history of the Web".</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Outlook.com">Outlook.com</a>
+                                                by
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Outlook.com&action=history">Wikipedia Contributors</a>
-                                        is licensed under
+                                                is licensed under
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend><label for="number">How many digits are ther in a UPC-A barcode?</label></legend>
-                            <input name="number" min="12" max="12" pattern="12" type="number" id="number" required>
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Universal_Product_Code&oldid=1054888012">UPC (technically refers to UPC-A) consists of 12 digits that are uniquely assigned to each trade item. Along with the related EAN barcode, the UPC is the barcode mainly used for scanning of trade items at the point of sale, per GS1 specifications.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</a>
-                                        by
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Universal_Product_Code&action=history">Wikipedia Contributors</a>
-                                        is licensed under
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                            <legend>
+                                <label for="number">How many digits are ther in a UPC-A barcode?</label>
+                            </legend>
+                            <dl>
+                                <dt>
+                                    <input name="number" min="12" max="12" pattern="12" type="number" id="number" required>
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Universal_Product_Code&oldid=1054888012">UPC (technically refers to UPC-A) consists of 12 digits that are uniquely assigned to each trade item. Along with the related EAN barcode, the UPC is the barcode mainly used for scanning of trade items at the point of sale, per GS1 specifications.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</a>
+                                                by
+                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Universal_Product_Code&action=history">Wikipedia Contributors</a>
+                                                is licensed under
+                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend><label for="text">What is Dr. Lazarus's catchphrase in Galaxy Quest?</label></legend>
-                            <input name="text" required id="text" pattern="By Grabthar's Hammer">
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Galaxy_Quest&oldid=1054205349#Casting">Dr. Lazarus' catchphrase, "By Grabthar's Hammer", was written as a temp line in Gordon's script; Gordon planned to replace "Grabthar" with something less comical, but the line stuck as the production crew started using it around their offices and had it printed on t-shirts.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Galaxy_Quest">Galaxy Quest</a>
-                                        by
+                            <legend>
+                                <label for="text">What is Dr. Lazarus's catchphrase in Galaxy Quest?</label>
+                            </legend>
+                            <dl>
+                                <dt>
+                                    <input name="text" required id="text" pattern="By Grabthar's Hammer">
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Galaxy_Quest&oldid=1054205349#Casting">Dr. Lazarus' catchphrase, "By Grabthar's Hammer", was written as a temp line in Gordon's script; Gordon planned to replace "Grabthar" with something less comical, but the line stuck as the production crew started using it around their offices and had it printed on t-shirts.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Galaxy_Quest">Galaxy Quest</a>
+                                                by
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Galaxy_Quest&action=history">Wikipedia Contributors</a>
-                                        is licensed under
+                                                is licensed under
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend>What video games wer significant points in the composer career of Yoko Shimomura?</legend>
-                            <label for="checkbox1">Kingdom Hearts</label>
-                            <input required name="checkbox1" id="checkbox1" type="checkbox" value="Kingdom Hearts">
-                            <br>
-                            <label for="checkbox2">Street Fighter II</label>
-                            <input required name="checkbox2" id="checkbox2" type="checkbox" value="Street Fighter II">
-                            <br>
-                            <label for="checkbox3">Super Mario RPG</label>
-                            <input required name="checkbox3" id="checkbox3" type="checkbox" value="Super Mario RPG">
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Yoko_Shimomura&oldid=1049779169#Career">In 2002 she wrote the score for Kingdom Hearts, which she has said is the most "special" soundtrack to her, as well as a turning point in her career; she named the soundtracks to Street Fighter II and Super Mario RPG as the other two significant points in her life as a composer.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Yoko_Shimomura">Yoko Shimomura</a>
-                                        by
+                            <legend>What games were significant points in the composer career of Yoko Shimomura?</legend>
+                            <dl>
+                                <dt>
+                                    <label for="checkbox1">Kingdom Hearts</label>
+                                    <input required name="checkbox1" id="checkbox1" type="checkbox" value="Kingdom Hearts">
+                                </dt>
+                                <dt>
+                                    <label for="checkbox2">Street Fighter II</label>
+                                    <input required name="checkbox2" id="checkbox2" type="checkbox" value="Street Fighter II">
+                                </dt>
+                                <dt>
+                                    <label for="checkbox3">Super Mario RPG</label>
+                                    <input required name="checkbox3" id="checkbox3" type="checkbox" value="Super Mario RPG">
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Yoko_Shimomura&oldid=1049779169#Career">In 2002 she wrote the score for Kingdom Hearts, which she has said is the most "special" soundtrack to her, as well as a turning point in her career; she named the soundtracks to Street Fighter II and Super Mario RPG as the other two significant points in her life as a composer.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Yoko_Shimomura">Yoko Shimomura</a>
+                                                by
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Yoko_Shimomura&action=history">Wikipedia Contributors</a>
-                                        is licensed under
+                                                is licensed under
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend>Who looks like Tingle and his siblings, but is unrelated to him?</legend>
-                            <label for="radio1">Ankle</label>
-                            <input type="radio" name="radio" id="radio1" value="Ankle" pattern="David Jr\.">
-                            <br>
-                            <label for="radio2">David Jr.</label>
-                            <input required type="radio" name="radio" id="radio2" value="David Jr." pattern="David Jr\.">
-                            <br>
-                            <label for="radio3">Knuckle</label>
-                            <input type="radio" name="radio" id="radio3" value="Knuckle" pattern="David Jr\.">
-                            <br>
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Tingle_(character)&oldid=1043039918">David Jr., although similar in appearance to Tingle and his brothers, is from Windfall Island and is unrelated to Tingle. After getting shipwrecked on Tingle Island, he was forced by Tingle to work turning the wheel. Unenthusiastic about his role, he does it anyway, although he is prone to complaining.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Tingle_(character)">Tingle (character)</a>
-                                        by
+                            <legend>Tingle has three brothers, who is your favorite?</legend>
+                            <dl>
+                                <dt>
+                                    <label for="radio1">Ankle</label>
+                                    <input type="radio" name="radio" id="radio1" value="Ankle" required>
+                                </dt>
+                                <dt>
+                                    <label for="radio2">David Jr.</label>
+                                    <input required type="radio" name="radio" id="radio2" value="David Jr." required>
+                                </dt>
+                                <dt>
+                                    <label for="radio3">Knuckle</label>
+                                    <input type="radio" name="radio" id="radio3" value="Knuckle" required>
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Tingle_(character)&oldid=1043039918">This game also introduced his brothers, Ankle and Knuckle, who are twins, and David Jr., who is not related but was (supposedly) saved by Tingle after his ship was sucked into a cyclone.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Tingle_(character)">Tingle (character)</a>
+                                                by
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Tingle_(character)&action=history">Wikipedia Contributors</a>
-                                        is licensed under
+                                                is licensed under
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend><label for="select">Which of these can be considered terrible fruit?</label></legend>
-                            <select name="select" required id="select" multiple>
-                                <option>apples</option>
-                                <option>bananas</option>
-                                <option>bean pods</option>
-                                <option>corn kernals</option>
-                                <option>grapes</option>
-                                <option>lemons</option>
-                                <option>nuts</option>
-                                <option>oranges</option>
-                                <option>strawberries</option>
-                                <option>tomatoes</option>
-                                <option>wheat grains</options>
-                            </select>
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Fruit&oldid=1053252101">In common language usage, "fruit" normally means the fleshy seed-associated structures (or produce) of plants that typically are sweet or sour and edible in the raw state, such as apples, bananas, grapes, lemons, oranges, and strawberries. In botanical usage, the term "fruit" also includes many structures that are not commonly called "fruits", such as nuts, bean pods, corn kernels, tomatoes, and wheat grains.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Fruit">Fruit</a>
-                                        by
+                            <legend>
+                                <label for="select">Which of these do you consider fruit?</label>
+                            </legend>
+                            <dl>
+                                <dt>
+                                    <select name="select" id="select" multiple>
+                                        <option>apples</option>
+                                        <option>bananas</option>
+                                        <option>bean pods</option>
+                                        <option>corn kernals</option>
+                                        <option>grapes</option>
+                                        <option>lemons</option>
+                                        <option>nuts</option>
+                                        <option>oranges</option>
+                                        <option>strawberries</option>
+                                        <option>tomatoes</option>
+                                        <option>wheat grains</option>
+                                    </select>
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Fruit&oldid=1053252101">In common language usage, "fruit" normally means the fleshy seed-associated structures (or produce) of plants that typically are sweet or sour and edible in the raw state, such as apples, bananas, grapes, lemons, oranges, and strawberries. In botanical usage, the term "fruit" also includes many structures that are not commonly called "fruits", such as nuts, bean pods, corn kernels, tomatoes, and wheat grains.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Fruit">Fruit</a>
+                                                by
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Fruit&action=history">Wikipedia Contributors</a>
-                                        is licensed under
+                                                is licensed under
                                         <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
                     </li>
                     <li>
                         <fieldset>
-                            <legend><label for="textarea">What is the meaning of life?</label></legend>
-                            <textarea name="textarea" id="textarea" maxlength="255" required></textarea>
-                            <details>
-                                <figure>
-                                    <blockquote cite="https://en.wikipedia.org/w/index.php?title=Meaning_of_life&oldid=1055275473">Different people and cultures believe different things for the answer to this question.</blockquote>
-                                    <figcaption>
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Meaning_of_life">Meaning of life</a>
-                                        by
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Meaning_of_life&action=history">Wikipedia Contributors</a>
-                                        is licensed under
-                                        <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
-                                    </figcaption>
-                                </figure>
-                            </details>
+                            <legend>
+                                <label for="textarea">What is the meaning of life?</label>
+                            </legend>
+                            <dl>
+                                <dt>
+                                    <textarea name="textarea" id="textarea" maxlength="255" required></textarea>
+                                </dt>
+                                <dd>
+                                    <details>
+                                        <summary>Source</summary>
+                                        <figure>
+                                            <blockquote cite="https://en.wikipedia.org/w/index.php?title=Meaning_of_life&oldid=1055275473">Different people and cultures believe different things for the answer to this question.</blockquote>
+                                            <figcaption>
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Meaning_of_life">Meaning of life</a>
+                                                by
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/w/index.php?title=Meaning_of_life&action=history">Wikipedia Contributors</a>
+                                                is licensed under
+                                                <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License" title="Creative Commons Attribution-ShareAlike 3.0 Unported License">CC BY-SA 3.0</a>
+                                            </figcaption>
+                                        </figure>
+                                    </details>
+                                </dd>
+                            </dl>
                         </fieldset>
+                    </li>
+                    <li>
+                        <button type="submit" id="submit">Submit correct answers to URL</button>
                     </li>
                 </ol>
-                <button type="submit" id="submit">Finalize answers in URL if most are correct</button>
             </form>
         </main>
     </body>
