@@ -83,11 +83,11 @@ ol>li+li,dd+dt,dt+dd {
 }
 
 body {
+    background-color: var(--space-color);
+    color: var(--glyph-color);
     align-items: center;
     margin: env(safe-area-inset-top, unset) env(safe-area-inset-right, unset) env(safe-area-inset-bottom, unset) env(safe-area-inset-left, unset);
     font-family: sans-serif;
-    color: var(--glyph-color);
-    background-color: var(--space-color);
     text-align: center;
     gap: var(--distributive-spread);
 }
