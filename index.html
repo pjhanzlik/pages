@@ -9,6 +9,10 @@
     <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
     <link rel="stylesheet" media="print, screen" href="/graphite.css">
     <style>
+body {
+    color: #343a40;
+    background-color: #f8f9fa;
+}
 #blur:checked ~ [name=small-screen] {
     filter: blur(2px);
 }
@@ -42,7 +46,7 @@
             <br>
             <iframe
                 style="max-width: var(--minimum-width, 15rem); width: 100%;"
-                srcdoc='<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Instructive Placeholder</title><link rel="stylesheet" media="screen, print" href="/graphite.css"><style>:root {--space-color: #fff0f6; --glyph-color: #a01040;} body { min-height: 100vh;}</style></head><body><ul><li>Project links open up on this small iframe</li><li>Open a new tab for fullscreen view</li></ul></body></html>'
+                srcdoc='<!DOCTYPE html><html lang="en-us"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Instructive Placeholder</title><link rel="stylesheet" media="screen, print" href="/graphite.css"><style>body { margin: auto; background-color: #fff0f6; color: #a01040; min-height: 100vh;}</style></head><body><ul><li>Project links open up on this small iframe</li><li>Open a new tab for fullscreen view</li></ul></body></html>'
                 title="Small Screen" name="small-screen" width="240" height="140"></iframe>
         </fieldset>
     </aside>
