@@ -3,54 +3,21 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>Commit Quotes</title>
-        <style>
-            body {
-                margin: 0;
-                display: flex;
-                min-height: 100vh;
-                background-color: var(--primary-color, dimgray);
-                color: white;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.1em;
-                font-family: cursive;
-            }
+        <title>Commit Comments</title>
+        <link rel="stylesheet" media="print, screen" href="/graphite.css">
+        <script type="module">
+            import RandomQuoteMachine from "./RandomQuoteMachine.js";
 
-            blockquote, figure {
-                margin: 0;
-            }
-
-            random-quote-machine {
-                display: grid;
-                justify-items: start;
-                background-color: white;
-                border-radius: 8px;
-                background-color: white;
-                color: var(--primary-color, dimgray);
-            }
-
-            figure {
-                font-weight: bold;
-            }
-
-            a {
-                text-decoration: none;
-                color: white;
-                background-color: var(--primary-color, dimgray);
-                border-radius: 4px;
-                padding: 4px;
-            }
-        </style>
-        <script type="module"></script>
+            customElements.define("random-quote-machine", RandomQuoteMachine);
+        </script>
     </head>
     <body>
         <random-quote-machine data-quotes="./commit quotes.json">
             <figure>
-                <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tempor enim. Maecenas feugiat urna eu interdum aliquet. Nunc pellentesque tortor enim, vel ultrices enim eleifend non. Proin maximus, sapien a porttitor convallis, nibh enim interdum lectus, vel consectetur leo nunc at enim. Quisque a aliquet dolor. Proin lacus nunc, finibus non enim non, egestas sagittis lacus. Nam in turpis accumsan, semper enim a, luctus ante. Aenean at nisi auctor, lacinia justo sed, faucibus nisi. Nulla non vehicula sem. Vestibulum consectetur accumsan bibendum.</blockquote>
-                <figcaption>Hello World</figcaption>
+                <blockquote cite="https://mobile.twitter.com">JavaScript is not available.</blockquote>
+                <figcaption>I hope this message becomes an easter egg in the future, rather than a screen of death.</figcaption>
             </figure>
-            <a rel="noopener" target="_blank" href="mailto:?subject=Hello World&body=Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in tempor enim. Maecenas feugiat urna eu interdum aliquet. Nunc pellentesque tortor enim, vel ultrices enim eleifend non. Proin maximus, sapien a porttitor convallis, nibh enim interdum lectus, vel consectetur leo nunc at enim. Quisque a aliquet dolor. Proin lacus nunc, finibus non enim non, egestas sagittis lacus. Nam in turpis accumsan, semper enim a, luctus ante. Aenean at nisi auctor, lacinia justo sed, faucibus nisi. Nulla non vehicula sem. Vestibulum consectetur accumsan bibendum.">Email</a>
+            <a rel="noopener" target="_blank" href="mailto:?subject=JavaScript is not available&body=I hope this message becomes an easter egg in the future, rather than a screen of death.">Email</a>
         </random-quote-machine>
     </body>
 </html>
