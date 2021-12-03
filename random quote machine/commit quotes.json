@@ -1,42 +1,34 @@
 [
     {
-        "caption": "2021-11-07T07:44:12-06:00",
+        "caption": "Turns out browsers have security features which prevent users from blindly navigating to third-party websites.",
         "quote": "iframes with external links need target blank"
     },
     {
-        "caption": "2021-11-06T17:05:58-05:00",
+        "caption": "Everyone seems to like cards with rounded corners, so in this update I rounded corners.",
         "quote": "Card style tweaks"
     },
     {
-        "caption": "2021-11-06T07:22:12-05:00",
+        "caption": "This moment I learned that \"rm\" is different from \"git rm\".",
         "quote": "woops, need to remove old gitlab dir"
     },
     {
-        "caption": "2021-11-06T07:19:30-05:00",
+        "caption": "While it is neat to use images on top of buttons, I found colored text to be pretty and informative.",
         "quote": "remove logo links, use excalidraw colors"
     },
     {
-        "caption": "2021-11-05T13:40:15-05:00",
+        "caption": "What I actually did in this commit was allow iframes to resize themselves below 240px, so it is a really bad commit message.",
         "quote": "scale homepage width to sub-200px"
     },
     {
-        "caption": "2021-11-04T22:22:22+01:00",
+        "caption": "I have no idea what the update was. I think it was just correcting spelling errors.",
         "quote": "Update 'README.md'"
     },
     {
-        "caption": "2021-11-04T22:22:00+01:00",
-        "quote": "Add 'README.md'"
-    },
-    {
-        "caption": "2021-11-04T22:04:14+01:00",
-        "quote": "Add 'LICENSE'"
-    },
-    {
-        "caption": "2021-11-04T14:15:50-05:00",
+        "caption": "This might have changes with Codeberg Pages V2, but apostrephes in filenames resulted in HTTP errors.",
         "quote": "Codeberg does not like apostrephes in filenames"
     },
     {
-        "caption": "2021-11-04T13:38:38-05:00",
+        "caption": "My first commit in my Codeberg pages repo, and I don't have any regrets so far.",
         "quote": "Prepare for codeburg migration"
     }
 ]
