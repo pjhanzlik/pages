@@ -1,7 +1,7 @@
 :root {
-    --commutative-spread: 0.5rem;
-    --associative-spread: 1.5rem;
-    --distributive-spread: 4.5rem;
+    --commutative-spread: 0.75rem;
+    --associative-spread: 1rem;
+    --distributive-spread: 3rem;
 }
 
 blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,ol,p,ul {
@@ -127,6 +127,10 @@ button,option {
     font-family: unset;
     font-size: 1em;
     text-align: unset;
+}
+
+summary>:is(h1,h2,h3,h4,h5,h6):first-child {
+    display: inline;
 }
 
 iframe {
