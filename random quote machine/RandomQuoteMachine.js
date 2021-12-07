@@ -1,132 +1,97 @@
-const INITIAL_TEMPLATE = document.createElement("template");
-INITIAL_TEMPLATE.innerHTML = `
-<style>
-:host,figure {
-    display: grid;
+const INIT_DATA = {
+    title: "Hello, World!",
+    url: "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
+    text: "A great default greeting for the day."
 }
-:host {
-    border-radius: 1em;
-    --glyph-color: white;
-    --space-color: black;
-    padding: 1em;
-    grid-template-areas: "output output" "share next";
-    background-color: var(--space-color);
-    color: var(--glyph-color);
-    font-family: sans-serif;
-    text-align: center;
-    gap: 1em;
-}
-figure {
-    gap: 0.3em;
-    font-size: 1.25em;
-}
-:disabled {
-    opacity: 0;
-}
-:any-link {
-    text-decoration: unset;
-}
-button {
-    background-color: unset;
-    font-size: unset;
-    text-align: unset;
-    padding: unset;
-    border: unset;
-    font-family: unset;
-}
-button, :any-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--space-color);
-    background-color: var(--glyph-color);
-    border-radius: 4px;
-    border: solid 4px var(--glyph-color);
-}
-output {
-    grid-area: output; 
-}
-blockquote,figure {
-    margin: 0;
-}
-#share {
-    grid-area: share;
-}
-#next {
-    grid-area: next;
-}
-blockquote {
-    font-weight: bold;
-    font-size: 1.25em;
-}
-</style>
-<output for="next">
-    <figure id="description">
-        <blockquote id="quote"></blockquote>
-        <figcaption id="caption"></figcaption>
-    </figure>
+
+const INIT_TEMPLATE = document.createElement("template");
+INIT_TEMPLATE.innerHTML = `<output for="next">
+    <slot id="quote-slot" name="quote">
+        <details>
+            <summary><q cite="${INIT_DATA.url}">${INIT_DATA.title}</q></summary>
+            ${INIT_DATA.text}
+        </details>
+    </slot>
 </output>
-<a id="share" part="button" rel="noopener" target="_blank" aria-describedby="description">Email</a>
-<button id="next" part="button" type="button" disabled>New quote</button>`;
+${navigator.share ? `<button id="share-button" type="button" aria-describedby="quote">Share</button>` : `<a id="share-button" rel="noopener" target="_blank" aria-describedby="quote" href="mailto:?subject=${INIT_DATA.title}&body=${INIT_DATA.text}%0A${INIT_DATA.url}">Email</a>`}
+<button id="next-button" type="button" disabled>Next</button>`;
 
 export default class extends HTMLElement {
+    get shareData() {
+        const quoteSlot = this.shadowRoot.getElementById("quote-slot");
+        const assignedQuotes = quoteSlot.assignedElements();
+
+        const quoteElement = assignedQuotes.length ? assignedQuotes[0] : quoteSlot.firstElementChild;
+        const titleElement = quoteElement.querySelector("summary,figcaption:first-child");
+
+        return {
+            title: titleElement.textContent.trim(),
+            text: titleElement.nextSibling.textContent.trim(),
+            url: titleElement.querySelector("q,blockquote").cite
+        }
+    }
+
+    get mailto() {
+        const {title, text, url} = this.shareData;
+        return `mailto:?subject=${title}&body=${text}%0A${url}`
+    }
+
     constructor() {
         super();
-        this.attachShadow({mode: "open"});
+        this.attachShadow({
+            mode: "open"
+        });
+        this.shadowRoot.append(INIT_TEMPLATE.content.cloneNode(true));
 
-        this.shadowRoot.append(INITIAL_TEMPLATE.content.cloneNode(true));
-        this._caption = this.shadowRoot.getElementById("caption");
-        this._share = this.shadowRoot.getElementById("share");
-        this._quote = this.shadowRoot.getElementById("quote");
-        this._next = this.shadowRoot.getElementById("next");
-        this._next.onclick = () => {
-            this.nextQuote();
-            this.scrollIntoView(true);
-        }
-    }
-
-    static get observedAttributes() { return ["data-quotes"] };
-
-    attributeChangedCallback(name, oldValue, nextValue) {
-        this.fetchQuotes(nextValue);
-    }
-
-    fetchQuotes = async (url) => {
-        if(this._prevFetch) {
-            this._prevFetch.abort();
-        }
-        this._prevFetch = new AbortController();
-        const response = await fetch(url, {signal: this._prevFetch.signal});
-        this.unread = await response.json();
-        this.nextQuote();
-    }
-
-    nextQuote = () => {
-        const next = Math.floor(Math.random()*this.unread.length);
-        this._quote.textContent = this.unread[next].quote;
-        this._caption.textContent = this.unread[next].caption;
-        this._share.href = `mailto:?subject=${this.unread[next].quote}&body=${this.unread[next].caption}`;
-        if(this.unread[next].source) {
-            this._quote.cite = this.unread[next].source;
-        }
-        else {
-            this._quote.removeAttribute("cite");
+        const shareButton = this.shadowRoot.getElementById("share-button");
+        if (shareButton instanceof HTMLButtonElement) {
+            shareButton.onclick = async(clickedShare)=>{
+                try {
+                    await navigator.share(this.shareData)
+                } catch (shareException) {
+                    console.debug(shareException);
+                }
+            }
         }
 
-        this.unread = this.unread.slice(0,next).concat(this.unread.slice(next+1));
-    }
-
-    set unread(array) {
-        if(array.length) {
-            this._next.disabled = false;
+        const nextButton = this.shadowRoot.getElementById("next-button");
+        nextButton.onclick = (clickedNext)=>{
+            const headIndex = Math.floor(Math.random() * (this.children.length - 1));
+            if (this.children[headIndex].slot) {
+                this.children[headIndex].removeAttribute("slot");
+                this.lastElementChild.slot = "quote";
+            } else {
+                const quoteSlot = this.shadowRoot.getElementById("quote-slot");
+                quoteSlot.assignedElements()[0].removeAttribute("slot");
+                this.children[headIndex].slot = "quote";
+            }
         }
-        else {
-            this._next.disabled = true;
-        }
-        this._unread = array;
-    }
+        ;
 
-    get unread() {
-        return this._unread;
+        const quoteSlot = this.shadowRoot.getElementById("quote-slot");
+        quoteSlot.addEventListener("slotchange", ()=>{
+            const quotes = quoteSlot.assignedElements();
+            // Remove all but one quote from slot (can trigger slotchange)
+            if (quotes.length > 1) {
+                const extraQuotes = quotes.slice(quotes.length - 1)
+                extraQuotes.map((q)=>{
+                    q.removeAttribute("slot")
+                }
+                );
+            }// Having one quote slotted means we can safely set UI
+            else {
+                if (shareButton instanceof HTMLAnchorElement) {
+                    shareButton.href = this.mailto;
+                }
+
+                if (this.children.length > 1) {
+                    nextButton.disabled = false;
+                } else {
+                    nextButton.disabled = true;
+                }
+            }
+        }
+        );
+
     }
 }
