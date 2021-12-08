@@ -94,7 +94,7 @@ export default class extends HTMLElement {
 
         const shareButton = this.shadowRoot.getElementById("share-button");
         if (shareButton instanceof HTMLButtonElement) {
-            shareButton.onclick = async(clickedShare)=>{
+            shareButton.onclick = async ()=>{
                 try {
                     await navigator.share(this.shareData)
                 } catch (shareException) {
@@ -104,7 +104,7 @@ export default class extends HTMLElement {
         }
 
         const nextButton = this.shadowRoot.getElementById("next-button");
-        nextButton.onclick = (clickedNext)=>{
+        nextButton.onclick = async ()=>{
             const headIndex = Math.floor(Math.random() * (this.children.length - 1));
             if (this.children[headIndex].slot) {
                 this.children[headIndex].removeAttribute("slot");
@@ -121,12 +121,12 @@ export default class extends HTMLElement {
         if(!quoteSlot.assignedElements.length) {
             this.children[Math.floor(Math.random()*this.children.length)].slot = "quote";
         }
-        quoteSlot.addEventListener("slotchange", ()=>{
+        quoteSlot.addEventListener("slotchange", async ()=>{
             const quotes = quoteSlot.assignedElements();
-            // Remove all but one quote from slot (can trigger slotchange)
+            // Remove all but one quote from slot (would trigger slotchange)
             if (quotes.length > 1) {
                 const extraQuotes = quotes.slice(quotes.length - 1)
-                extraQuotes.map((q)=>{
+                extraQuotes.map(async (q)=>{
                     q.removeAttribute("slot")
                 }
                 );
