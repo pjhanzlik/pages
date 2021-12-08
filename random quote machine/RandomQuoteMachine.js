@@ -1,33 +1,35 @@
-const INIT_DATA = {
+const EXAMPLE_DATA = {
     title: "Hello, World!",
     url: "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
     text: "A great default greeting for the day."
 }
 
 const INIT_TEMPLATE = document.createElement("template");
-INIT_TEMPLATE.innerHTML = `<output for="next">
-    <slot id="quote-slot" name="quote">
-        <details>
-            <summary><q cite="${INIT_DATA.url}">${INIT_DATA.title}</q></summary>
-            ${INIT_DATA.text}
-        </details>
-    </slot>
-</output>
-${navigator.share ? `<button id="share-button" type="button" aria-describedby="quote">Share</button>` : `<a id="share-button" rel="noopener" target="_blank" aria-describedby="quote" href="mailto:?subject=${INIT_DATA.title}&body=${INIT_DATA.text}%0A${INIT_DATA.url}">Email</a>`}
-<button id="next-button" type="button" disabled>Next</button>`;
+INIT_TEMPLATE.innerHTML = `<fieldset>
+    <legend>
+        <slot id="quote-slot" name="quote">
+            <figure>
+                <blockquote cite="${EXAMPLE_DATA.url}">${EXAMPLE_DATA.title}</blockquote>
+                <figcaption>${EXAMPLE_DATA.text}</figcaption>
+            </figure>
+        </slot>
+    </legend>
+    ${navigator.share ? `<button type="button"` : `<a rel="noopener" target="_blank" href="mailto:?subject=${EXAMPLE_DATA.title}&body=${EXAMPLE_DATA.text}%0A${EXAMPLE_DATA.url}"`} id="share-button">${navigator.share ? `Share</button>` : `Email</a>`}
+    <button id="next-button" type="button" disabled>Next</button>
+</fieldset>`;
 
 export default class extends HTMLElement {
     get shareData() {
         const quoteSlot = this.shadowRoot.getElementById("quote-slot");
         const assignedQuotes = quoteSlot.assignedElements();
-
-        const quoteElement = assignedQuotes.length ? assignedQuotes[0] : quoteSlot.firstElementChild;
-        const titleElement = quoteElement.querySelector("summary,figcaption:first-child");
+        const currentQuote = assignedQuotes.length ? assignedQuotes[0] : quoteSlot.firstElementChild;
+        const caption = currentQuote.querySelector("figcaption,summary");
+        const quote = currentQuote.querySelector("q,blockquote");
 
         return {
-            title: titleElement.textContent.trim(),
-            text: titleElement.nextSibling.textContent.trim(),
-            url: titleElement.querySelector("q,blockquote").cite
+            title: caption.textContent.trim(),
+            text: quote.textContent.trim(),
+            url: quote.cite
         }
     }
 
@@ -65,10 +67,12 @@ export default class extends HTMLElement {
                 quoteSlot.assignedElements()[0].removeAttribute("slot");
                 this.children[headIndex].slot = "quote";
             }
-        }
-        ;
+        };
 
         const quoteSlot = this.shadowRoot.getElementById("quote-slot");
+        if(!quoteSlot.assignedElements.length) {
+            this.children[Math.floor(Math.random()*this.children.length)].slot = "quote";
+        }
         quoteSlot.addEventListener("slotchange", ()=>{
             const quotes = quoteSlot.assignedElements();
             // Remove all but one quote from slot (can trigger slotchange)
@@ -92,6 +96,5 @@ export default class extends HTMLElement {
             }
         }
         );
-
     }
 }
