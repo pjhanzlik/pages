@@ -5,7 +5,54 @@ const EXAMPLE_DATA = {
 }
 
 const INIT_TEMPLATE = document.createElement("template");
-INIT_TEMPLATE.innerHTML = `<fieldset>
+INIT_TEMPLATE.innerHTML = `<style>
+:host {
+    display: block;
+    background-color: var(--space-color);
+    color: var(--glyph-color);
+    border-radius: 16px;
+    padding: 16px;
+    --glyph-color: white;
+    --space-color: black;
+    font-family: cursive;
+    text-align: start;
+}
+::slotted(figure),figure {
+    margin: 0;
+}
+:host > fieldset {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 0;
+    perspective: 1em;
+
+}
+:host > fieldset > legend {
+    float: left;
+    flex: 100%;
+}
+#share-button, #next-button {
+    flex: auto;
+    appearance: none;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--glyph-color);
+    color: var(--space-color);
+    font-family: unset;
+    transition: transform 0.1s;
+    text-decoration: none;
+}
+:disabled {
+    opacity: 0;
+}
+:is(#share-button, #next-button):active:hover {
+    transform: translateZ(-1px);
+}
+</style>
+<fieldset>
     <legend>
         <slot id="quote-slot" name="quote">
             <figure>
@@ -14,8 +61,8 @@ INIT_TEMPLATE.innerHTML = `<fieldset>
             </figure>
         </slot>
     </legend>
-    ${navigator.share ? `<button type="button"` : `<a rel="noopener" target="_blank" href="mailto:?subject=${EXAMPLE_DATA.title}&body=${EXAMPLE_DATA.text}%0A${EXAMPLE_DATA.url}"`} id="share-button">${navigator.share ? `Share</button>` : `Email</a>`}
-    <button id="next-button" type="button" disabled>Next</button>
+    ${navigator.share ? `<button type="button"` : `<a rel="noopener" target="_blank" href="mailto:?subject=${EXAMPLE_DATA.title}&body=${EXAMPLE_DATA.text}%0A${EXAMPLE_DATA.url}"`} part="button" id="share-button">${navigator.share ? `Share</button>` : `Email</a>`}
+    <button part="button" id="next-button" type="button" disabled>Next</button>
 </fieldset>`;
 
 export default class extends HTMLElement {
