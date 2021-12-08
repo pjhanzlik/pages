@@ -67,6 +67,7 @@ export default class extends HTMLElement {
                 quoteSlot.assignedElements()[0].removeAttribute("slot");
                 this.children[headIndex].slot = "quote";
             }
+            this.scrollIntoView();
         };
 
         const quoteSlot = this.shadowRoot.getElementById("quote-slot");
