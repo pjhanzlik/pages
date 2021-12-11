@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Markdown Prototype</title>
+        <meta name="description" content="Making a Markdown parser shouldn't be too hard...">
+        <link rel="stylesheet" media="screen,print" href="/graphite.css">
+        <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
+        <script type="module">
+            import MarkdownPreviewer from "./MarkdownPreviewer.js";
+            customElements.define("markdown-previewer", MarkdownPreviewer);
+        </script>
+    </head>
+    <body>
+        <markdown-previewer>
+<pre>
+# Hello, World!
+
+Above is an example of Markdown heading.
+Level one to be specific.  There are six
+levels of heading in HTML and Markdown.
+
+## Here are some more examples
+
+Adding more hashtags increases the heading 
+level respectively. So the above heading is
+level two.  Headings should proceed linearly;
+meaning one precedes a two which procedes a three.
+In other words, don't go directly from a level
+one heading to level three heading, make sure
+there is a level two inbetween!
+
+### Emphasizing Text
+
+Headings should be used to bring structure to
+a document. If you need to make text **bold**
+surround it with two ampersands. *Italic* text
+is surrounded by one ampersand.  You can make
+text ***bold and italic*** by using three ampersands.
+
+### Making a List
+
+Tired of reading paragraphs? You can make lists
+by starting a line with a dash.
+
+- Dashes get turned into bullet point lists
+- Bullet point lists are great for making unordered 
+  points
+- Unordered points can be read in any order and still
+  make sense
+
+Ordered lists should be made with ascending number 
+counts followed by a period.  The three rules of 
+order lists are:
+
+1. All ordered lists must start at 1, use CSS to change the number
+1. Ordered lists can be made up of a 1's or ascending numbers
+1. The three rules of order lists are unordered points
+
+## Advanced Examples
+
+Only images and hyperlinks are supported in Markdown. To make
+a link use braces around anchor text followed by parenthesis
+around url text, like so: [My Emoji Self Portrait](/happy emoji portrait.svg)
+
+Images are similar to hyperlinks, but their braces are preceded
+by an exclamation, and their braced text should describe the image.
+
+[Smiling square face](/happy emoji portrait.svg)
+
+Media URLs can be very long, so Markdown has another way
+to specify media elements if your raw text needs to look pretty.
+If you are into that level of detail though, you should probably
+look into the CommonMark Spec for other neat tips and tricks.
+
+### Adding semantics
+
+When quoting someone you can use quotemarks, but an 
+unambiguous way to do this in Markdown is to start 
+lines with a greater than symbol.
+
+> This is one blockquote.
+> You can quote me on that.
+
+Surrounding text in tick marks denotes code examples.
+Short examples that fit inline like `Hello, World!` only
+need one tick mark.  To specify blocks of code surround
+text with three tick marks.
+
+```
+/* This is a JavaScript block comment
+   It might also be a block comment in other languages
+*/
+```
+
+Finally, for thematic breaks there is the horizontal rule.
+---
+Three dashes in a row draws a line (usually) in the rendered
+document.  Try not to use horizontal rules for styling though.
+Their real purpose is to declare a thematic change, like a
+change of scene in a play or a change from setup dialog to
+punchline in a joke.
+---
+Remember, jokes don't land if you don't set them up.
+</pre>
+    </markdown-previewer>
+    </body>
+</html>

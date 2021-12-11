@@ -4,100 +4,19 @@
     --distributive-spread: 3rem;
 }
 
-blockquote,dl,dd,fieldset,figure,h1,h2,h3,h4,h5,h6,input,ol,p,ul {
-    margin: 0;
-}
-
-address,aside,body,header,footer,main,nav,section {
-    display: flex;
-}
-
-blockquote {
-    font-style: italic;
-}
-
-aside,header,footer,section,main {
-    flex-direction: column;
-    justify-content: space-around;
-}
-address,body,nav {
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-address, nav {
-    gap: var(--commutative-spread);
-}
-
-body>:is(header, footer) {
-    flex: 100%;
-}
-
-body>header {
-    align-self: end;
-}
-
-body>footer {
-    align-self: start;
-}
-
-
-br+* {
-    display: inline-block;
-    margin-block-start: var(--commutative-spread);
-}
-
-
-dt, legend,legend>label {
-    font-weight: bold;
-}
-
-fieldset,button {
-    padding: 0;
-}
-
-dl, fieldset, form {
-    text-align: start;
-}
-
-figcaption:first-child {
-    margin-block-end: var(--commutative-spread);
-}
-
-figcaption:last-child,li+li,dt+dt,dd+dd,option+option {
-    margin-block-start: var(--commutative-spread);
-}
-
-ol>li+li,dd+dt,dt+dd {
-    margin-block-start: var(--associative-spread);
-}
-
-[open]>summary,legend {
-    margin-block-end: var(--associative-spread);
-}
-
 body {
-    align-items: center;
     font-family: sans-serif;
-    text-align: center;
-    gap: var(--distributive-spread);
-}
-
-aside,header,footer,main,section {
-    gap: var(--associative-spread);
 }
 
 :any-link, button {
     color: unset;
+}
+
+:any-link {
     display: inline-block;
 }
 
-blockquote,
-details {
-    max-width: fit-content;
-}
-
-fieldset, iframe,button {
+fieldset, iframe, button {
     border: unset;
 }
 
@@ -108,18 +27,11 @@ mark {
 }
 
 :target {
-    filter: drop-shadow(0 0 0.0625rem currentColor);
-}
-
-label {
-    font-weight: initial;
-}
-
-summary,button {
-    text-decoration-line: underline;
+    filter: drop-shadow(0 0 1px currentColor);
 }
 
 button {
+    text-decoration-line: underline;
     background-color: unset;
 }
 
@@ -129,10 +41,7 @@ button,option {
     text-align: unset;
 }
 
-summary>:is(h1,h2,h3,h4,h5,h6):first-child {
-    display: inline;
-}
-
 iframe {
-    display: block;
+    /* background should be an animated loading screen */
+    background-color: currentColor;
 }
