@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Pomodoro Timer</title>
+        <meta name="description" content="Is there a way to make a real timer on the web yet?">
+        <link rel="stylesheet" media="screen,print" href="/graphite.css">
+        <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
+        <script type="module">
+            import PomodoroTimer from "./PomodoroTimer.js";
+            customElements.define("pomodoro-timer", PomodoroTimer);
+        </script>
+    </head>
+    <body>
+        <pomodoro-timer data-work="30" data-break="10">
+            To execute a pomodoro, work for 25 minutes, rest for 5, and repeat three times.
+        </pomodoro-timer>
+    </body>
+</html>

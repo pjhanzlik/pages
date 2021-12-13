@@ -1,8 +1,9 @@
-const EXAMPLE_DATA = {
-    title: "Hello, World!",
-    url: "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program",
-    text: "A great default greeting for the day."
-}
+const TITLE = "Hello, World!";
+const URL = "https://en.wikipedia.org/wiki/%22Hello,_World!%22_program";
+const TEXT = "A great default greeting for the day.";
+const SHARE_TAG = navigator.share ? "button" : "a";
+const SHARE_ATTRIBUTES = navigator.share ? 'type="button"' : `rel="noopener" target="_blank" href="mailto:?subject=${TITLE}&body=${TEXT}%0A${URL}"`;
+const SHARE_TEXT = navigator.share ? "Share" : "E-mail";
 
 const INIT_TEMPLATE = document.createElement("template");
 INIT_TEMPLATE.innerHTML = `<style>
@@ -45,6 +46,9 @@ INIT_TEMPLATE.innerHTML = `<style>
     transition: transform 0.1s;
     text-decoration: none;
 }
+#rest-slot {
+    display: none;
+}
 :disabled {
     opacity: 0;
 }
@@ -54,24 +58,25 @@ INIT_TEMPLATE.innerHTML = `<style>
 </style>
 <fieldset>
     <legend>
-        <slot id="quote-slot" name="quote">
+        <slot id="head-slot" name="head">
             <figure>
-                <blockquote cite="${EXAMPLE_DATA.url}">${EXAMPLE_DATA.title}</blockquote>
-                <figcaption>${EXAMPLE_DATA.text}</figcaption>
+                <blockquote cite="${URL}">${TITLE}</blockquote>
+                <figcaption>${TEXT}</figcaption>
             </figure>
         </slot>
     </legend>
-    ${navigator.share ? `<button type="button"` : `<a rel="noopener" target="_blank" href="mailto:?subject=${EXAMPLE_DATA.title}&body=${EXAMPLE_DATA.text}%0A${EXAMPLE_DATA.url}"`} part="button" id="share-button">${navigator.share ? `Share</button>` : `Email</a>`}
+    <${SHARE_TAG} ${SHARE_ATTRIBUTES} part="button" id="share-button">${SHARE_TEXT}</${SHARE_TAG}>
     <button part="button" id="next-button" type="button" disabled>Next</button>
+    <slot id="rest-slot">
+    </slot>
 </fieldset>`;
 
 export default class extends HTMLElement {
     get shareData() {
-        const quoteSlot = this.shadowRoot.getElementById("quote-slot");
-        const assignedQuotes = quoteSlot.assignedElements();
-        const currentQuote = assignedQuotes.length ? assignedQuotes[0] : quoteSlot.firstElementChild;
-        const caption = currentQuote.querySelector("figcaption,summary");
-        const quote = currentQuote.querySelector("q,blockquote");
+        const sharedSlot = this.shadowRoot.getElementById("head-slot");
+        const shareQuote = sharedSlot.assignedElements()[0] || sharedSlot.firstElementChild;
+        const caption = shareQuote.querySelector("figcaption,summary");
+        const quote = shareQuote.querySelector("q,blockquote");
 
         return {
             title: caption.textContent.trim(),
@@ -104,25 +109,34 @@ export default class extends HTMLElement {
         }
 
         const nextButton = this.shadowRoot.getElementById("next-button");
+        const headSlot = this.shadowRoot.getElementById("head-slot");
+        const restSlot = this.shadowRoot.getElementById("rest-slot");
         nextButton.onclick = async ()=>{
-            const headIndex = Math.floor(Math.random() * (this.children.length - 1));
-            if (this.children[headIndex].slot) {
-                this.children[headIndex].removeAttribute("slot");
-                this.lastElementChild.slot = "quote";
-            } else {
-                const quoteSlot = this.shadowRoot.getElementById("quote-slot");
-                quoteSlot.assignedElements()[0].removeAttribute("slot");
-                this.children[headIndex].slot = "quote";
+            const restQuotes = restSlot.assignedElements();
+            const headQuotes = headSlot.assignedElements();
+            if(headQuotes.length === 1) {
+                headSlot.assignedElements()[0].removeAttribute("slot");
             }
+            else if(headQuotes.length > 1) {
+                throw new Error("Only one quote should be slotted when next is pressed")
+            }
+
+            if(restQuotes.length) {
+                restQuotes[Math.floor(Math.random()*restQuotes.length)].slot = "head"
+            }
+
             this.scrollIntoView();
         };
 
-        const quoteSlot = this.shadowRoot.getElementById("quote-slot");
-        if(!quoteSlot.assignedElements.length) {
-            this.children[Math.floor(Math.random()*this.children.length)].slot = "quote";
+        // Slot a random child if nothing is slotted, but a child is slottable
+        const unslottedQuotes = restSlot.assignedElements();
+        if(unslottedQuotes.length && !headSlot.assignedElements().length) {
+            unslottedQuotes[Math.floor(Math.random()*unslottedQuotes.length)].slot = "head";
         }
-        quoteSlot.addEventListener("slotchange", async ()=>{
-            const quotes = quoteSlot.assignedElements();
+
+        // Make sure only one element is slotted in head and ui is updated
+        headSlot.addEventListener("slotchange", async ()=>{
+            const quotes = headSlot.assignedElements();
             // Remove all but one quote from slot (would trigger slotchange)
             if (quotes.length > 1) {
                 const extraQuotes = quotes.slice(quotes.length - 1)
