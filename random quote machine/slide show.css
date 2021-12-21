@@ -1,0 +1,83 @@
+.slide-show blockquote,figure, fieldset {
+    margin: 0;
+}
+
+.slide-show fieldset {
+    padding: 0;
+    display: grid;
+    gap: 1em;
+    grid-template-areas: "id . . ." "quote quote quote quote" "email copy share random";
+    border: none;
+    align-items: center;
+    grid-auto-columns: 1fr;
+}
+
+.slide-show legend {
+    float: left;
+    grid-area: id;
+}
+
+.slide-show {
+    padding: var(--slide-padding, 1rem) 0;
+    font-family: cursive;
+    background-color: black;
+    color: white;
+    background: linear-gradient(90deg, black 0%, darkslategray 100%);
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: var(--slide-width, 100%);
+    width: var(--slide-width, 100%);
+    gap: var(--slide-padding, 1rem);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.slide-show>:is(fieldset,a) {
+    scroll-snap-align: center;
+}
+
+.slide-show figure {
+    display: grid;
+    gap: 0.5rem;
+    grid-area: quote;
+}
+
+.slide-show blockquote {
+    font-size: 1.5em;
+}
+
+.slide-show :any-link[href^=mailto] {
+    grid-area: email;
+}
+
+.slide-show .copy {
+    grid-area: copy;
+}
+
+.slide-show .share {
+    grid-area: share;
+}
+
+.slide-show .random {
+    grid-area: random;
+}
+
+.slide-show :any-link {
+    color: unset;
+}
+
+.slide-show ::part(button) {
+    color: unset;
+    background-color: transparent;
+    border: none;
+    font-family: unset;
+    text-decoration: underline;
+    font-size: unset;
+    padding: 0;
+}
+
+.slide-show>:any-link {
+    align-self: center;
+}
