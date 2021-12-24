@@ -6,7 +6,7 @@
     padding: 0;
     display: grid;
     gap: 1em;
-    grid-template-areas: "id . . ." "quote quote quote quote" "email copy share random";
+    grid-template-areas: "id id . ." "quote quote quote quote" "email copy share random";
     border: none;
     align-items: center;
     grid-auto-columns: 1fr;
@@ -15,20 +15,18 @@
 .slide-show legend {
     float: left;
     grid-area: id;
+    padding: 0;
+    justify-self: start;
 }
 
 .slide-show {
-    padding: var(--slide-padding, 1rem) 0;
     font-family: cursive;
-    background-color: black;
-    color: white;
-    background: linear-gradient(90deg, black 0%, darkslategray 100%);
     scroll-snap-type: x mandatory;
     overflow-x: scroll;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: var(--slide-width, 100%);
-    width: var(--slide-width, 100%);
+    min-width: var(--slide-width, 100%);
     gap: var(--slide-padding, 1rem);
     box-sizing: border-box;
     text-align: center;
@@ -42,6 +40,8 @@
     display: grid;
     gap: 0.5rem;
     grid-area: quote;
+    max-width: 25em;
+    justify-self: center;
 }
 
 .slide-show blockquote {
