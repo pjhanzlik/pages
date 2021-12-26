@@ -16,9 +16,8 @@ export default class extends HTMLElement {
         this.shadowRoot.append(INIT.content.cloneNode(true));
         const theButton = this.shadowRoot.getElementById("the-button");
         theButton.onclick = async () => {
-            const quote = document.getElementById(this.dataset.quote);
             try {
-                await navigator.clipboard.writeText(`${quote.textContent} ${quote.cite}`);
+                await navigator.clipboard.writeText(this.dataset.writeText);
             }
             catch(e) {
                 console.debug(e);
@@ -27,19 +26,18 @@ export default class extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ["data-quote"];
+        return ["data-write-text"];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
         const theButton = this.shadowRoot.getElementById("the-button");
-        const newTarget = document.getElementById(newValue);
-        if(newTarget instanceof HTMLQuoteElement) {
+        if(newValue) {
             theButton.disabled = false;
-            theButton.setAttribute("aria-details", newValue);
+            theButton.setAttribute("aria-description", newValue);
         }
         else {
             theButton.disabled = true;
-            theButton.removeAttribute("aria-details");
+            theButton.removeAttribute("aria-description");
         }
     }
 }
