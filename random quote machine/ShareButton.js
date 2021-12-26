@@ -8,7 +8,7 @@ TEMPLATE.innerHTML = `<style>
 }
 </style>
 <figure part="details" id="the-details">
-    <a></a>
+    <a rel="noopener" target="_blank"></a>
     <figcaption></figcaption>
 </figure>
 <button part="button" type="button" id="the-button" disabled aria-details="the-details">Share</button>`;
