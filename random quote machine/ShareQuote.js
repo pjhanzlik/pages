@@ -27,11 +27,11 @@ export default class extends HTMLElement {
         const shareButton = this.shadowRoot.getElementById("share-button");
         if(newValue) {
             shareButton.disabled = false;
-            copyButton.setAttribute("aria-details", this.dataset.quote);
+            shareButton.setAttribute("aria-details", this.dataset.quote);
         }
         else {
             shareButton.disabled = true;
-            copyButton.removeAttribute("aria-details");
+            shareButton.removeAttribute("aria-details");
         }
     }
 }
