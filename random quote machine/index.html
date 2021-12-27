@@ -5,99 +5,108 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Paul's Pages Log</title>
         <meta name="description" content="Messing around with Web Component slots to make a random blockquoteuote machine.">
-        <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
-        <link rel="stylesheet" media="screen,print" href="./slide show.css">
         <style>
-            @media screen, print {
-                body {
-                    margin: 0;
-                    background-color: black;
-                    background: linear-gradient(90deg, black 0%, darkslategray 100%);
-                    color: white;
-                }
-
-                .slide-show {
-                }
+            body {
+                background-color: black;
+                margin: 0;
+                min-height: 100vh;
+                display: grid;
+                place-items: center;
+            }
+            .slide-show {
+                background-color: white;
+            }
+            blockquote {
+                margin: 0;
             }
         </style>
-        <script type="module" async>
-            
-            if(navigator.canShare) {
-                const shareImport = await import("./ShareButton.js");
-                customElements.define("share-button", shareImport.default);
-            }
-        
-        </script>
-        <script type="module" async>
-            
-            if(navigator.clipboard) {
-                const copyImport = await import("./CopyButton.js");
-                customElements.define("copy-button", copyImport.default);
-            }
-        
-        </script>
-        <script type="module" async>
-            
-            const nextImport = await import("./AnotherOrderedAnchor.js");
-            customElements.define("another-ordered-anchor", nextImport.default);
-        
-        </script>
+        <link rel="icon" type="image/svg+xml" href="/happy emoji portrait.svg">
+        <link rel="stylesheet" media="screen,print" href="./slide show.css">
+        <script async type="module" src="./share-button.js"></script>
+        <script async type="module" src="./copy-button.js"></script>
+        <script async type="module" src="./random-next.js"></script>
     </head>
     <body>
-        <main class="slide-show">
-            <fieldset>
-                <legend>
-                    <a href="#commit-0">Commit #0</a>
-                </legend>
-                <figure>
-                    <blockquote id="commit-0" cite="https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0">Prepare for codeburg migration</blockquote>
-                    <figcaption>My first commit in my Codeberg pages repo, and I don't have any regrets so far.</figcaption>
-                </figure>
-                <a class="email" rel="noopener" target="_blank" href="mailto:?subject=Prepare for codeburg migration&body=https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0">Email</a>
-                <copy-button class="copy" data-write-text="Prepare for codeburg migration https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0"></copy-button>
-                <share-button class="share" data-title="Commit #0 in Paul's Pages Log" data-text="Prepare for codeburg migration" data-url="https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0"></share-button>
-                <another-ordered-anchor data-index="0" data-prefix="#commit-" class="random" data-length="4"></another-ordered-anchor>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <a href="#commit-1">Commit #1</a>
-                </legend>
-                <figure>
-                    <blockquote id="commit-1" cite="https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf">Codeberg does not like apostrephes in filenames</blockquote>
-                    <figcaption>This might have changes with Codeberg Pages V2, but apostrephes in filenames resulted in HTTP errors.</figcaption>
-                </figure>
-                <a class="email" rel="noopener" target="_blank" href="mailto:?subject=Codeberg does not like apostrephes in filenames&body=https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf">Email</a>
-                <copy-button class="copy" data-write-text="Codeberg does not like apostrephes in filenames https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf"></copy-button>
-                <share-button class="share" data-title="Commit #1 in Paul's Pages Log" data-text="Codeberg does not like apostrephes in filenames" data-url="https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf"></share-button>
-                <another-ordered-anchor data-index="1" data-prefix="#commit-" class="random" data-length="4"></another-ordered-anchor>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <a href="#commit-2">Commit #2</a>
-                </legend>
-                <figure>
-                    <blockquote id="commit-2" cite="https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4">Update 'README.md'</blockquote>
-                    <figcaption>I have no idea what the update was. I think it was just correcting spelling errors.</figcaption>
-                </figure>
-                <a class="email" rel="noopener" target="_blank" href="mailto:?subject=Update 'README.md'&body=https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4">Email</a>
-                <copy-button class="copy" data-write-text="Update 'README.md' https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4"></copy-button>
-                <share-button class="share" data-title="Commit #2 in Paul's Pages Log" data-text="Update 'README.md'" data-url="https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4"></share-button>
-                <another-ordered-anchor data-index="2" data-prefix="#commit-" class="random" data-length="4"></another-ordered-anchor>
-            </fieldset>
-            <fieldset>
-                <legend>
-                    <a href="#commit-3">Commit #3</a>
-                </legend>
-                <figure>
-                    <blockquote id="commit-3" cite="https://codeberg.org/pjhanzlik/pages/commit/971cafc3d222582a783b0bb5e954f5b3989a9de5">scale homepage width to sub-200px</blockquote>
-                    <figcaption>What I actually did in this commit was allow iframes to resize themselves below 240px, so it is a really bad commit message.</figcaption>
-                </figure>
-                <a class="email" rel="noopener" target="_blank" href="mailto:?subject=scale homepage width to sub-200px&body=https://codeberg.org/pjhanzlik/pages/commit/971cafc3d222582a783b0bb5e954f5b3989a9de5">Email</a>
-                <copy-button class="copy" data-write-text="scale homepage width to sub-200px"></copy-button>
-                <share-button class="share" data-title="Commit #2 in Paul's Pages Log" data-text="scale homepage width to sub-200px" data-url="https://codeberg.org/pjhanzlik/pages/commit/971cafc3d222582a783b0bb5e954f5b3989a9de5"></share-button>
-                <another-ordered-anchor data-index="3" data-prefix="#commit-" class="random" data-length="4"></another-ordered-anchor>
-            </fieldset>
-            <a href="./page 1.html">More commits please</a>
-        </main>
+        <dl class="slide-show">
+            <dt>
+                <a href="#commit-0">Commit #0</a>
+            </dt>
+            <dt>
+                <blockquote id="commit-0" cite="https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0">Prepare for codeburg migration</blockquote>
+            </dt>
+            <dd>My first commit in my Codeberg pages repo, and I don't have any regrets so far.</dd>
+            <dd>
+                <a rel="noopener" target="_blank" href="mailto:?subject=Prepare for codeburg migration&body=https://codeberg.org/pjhanzlik/pages/commit/09542b62d7070b53cd0ba572f6b4974408860ca0">Email</a>
+            </dd>
+            <dd>
+                <copy-button class="copy" data-quote="commit-0"></copy-button>
+            </dd>
+            <dd>
+                <share-button class="share" data-quote="commit-0"></share-button>
+            </dd>
+            <dd>
+                <random-next data-index="0" data-prefix="#commit-" class="random" data-length="4"></random-next>
+            </dd>
+            <dt>
+                <a href="#commit-1">Commit #1</a>
+            </dt>
+            <dt>
+                <blockquote id="commit-1" cite="https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf">Codeberg does not like apostrephes in filenames</blockquote>
+            </dt>
+            <dd>This might have changes with Codeberg Pages V2, but apostrephes in filenames resulted in HTTP errors.</dd>
+            <dd>
+                <a rel="noopener" target="_blank" href="mailto:?subject=Codeberg does not like apostrephes in filenames&body=https://codeberg.org/pjhanzlik/pages/commit/071fdd93bfec1c12e1610745fbafc26ad9a0c5cf">Email</a>
+            </dd>
+            <dd>
+                <copy-button class="copy" data-quote="commit-1"></copy-button>
+            </dd>
+            <dd>
+                <share-button class="share" data-quote="commit-1"></share-button>
+            </dd>
+            <dd>
+                <random-next data-index="1" data-prefix="#commit-" class="random" data-length="4"></random-next>
+            </dd>
+            <dt>
+                <a href="#commit-2">Commit #2</a>
+            </dt>
+            <dt>
+                <blockquote id="commit-2" cite="https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4">Update 'README.md'</blockquote>
+            </dt>
+            <dd>I have no idea what the update was. I think it was just correcting spelling errors.</dd>
+            <dd>
+                <a rel="noopener" target="_blank" href="mailto:?subject=Update 'README.md'&body=https://codeberg.org/pjhanzlik/pages/commit/159e185c53dac5c8034b5a6ed277bb717f6551c4">Email</a>
+            </dd>
+            <dd>
+                <copy-button class="copy" data-quote="commit-2"></copy-button>
+            </dd>
+            <dd>
+                <share-button class="share" data-quote="commit-2"></share-button>
+            </dd>
+            <dd>
+                <random-next data-index="2" data-prefix="#commit-" class="random" data-length="4"></random-next>
+            </dd>
+            <dt>
+                <a href="#commit-3">Commit #3</a>
+            </dt>
+            <dt>
+                <blockquote id="commit-3" cite="https://codeberg.org/pjhanzlik/pages/commit/971cafc3d222582a783b0bb5e954f5b3989a9de5">scale homepage width to sub-200px</blockquote>
+            </dt>
+            <dd>What I actually did in this commit was allow iframes to resize themselves below 240px, so it is a really bad commit message.</dd>
+            <dd>
+                <a rel="noopener" target="_blank" href="mailto:?subject=scale homepage width to sub-200px&body=https://codeberg.org/pjhanzlik/pages/commit/971cafc3d222582a783b0bb5e954f5b3989a9de5">Email</a>
+            </dd>
+            <dd>
+                <copy-button class="copy" data-quote="commit-3"></copy-button>
+            </dd>
+            <dd>
+                <share-button class="share" data-quote="commit-3"></share-button>
+            </dd>
+            <dd>
+                <random-next data-index="3" data-prefix="#commit-" class="random" data-length="4"></random-next>
+            </dd>
+            <dt>
+                <a href="./page 1.html">More commits please</a>
+            </dt>
+        </dl>
     </body>
 </html>
