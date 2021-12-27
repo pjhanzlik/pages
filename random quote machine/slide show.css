@@ -9,22 +9,16 @@ dl.slide-show {
     row-gap: 1em;
 }
 
-.slide-show>dt:nth-of-type(2n) {
-    grid-row-start: 2;
+.slide-show>dt:nth-of-type(2n+1) {
+    grid-row-start: 1;
     grid-column-end: span 4;
     font-size: 1.5em;
-    align-self: end;
     scroll-snap-align: center;
 
 }
 
-.slide-show>dt:last-of-type:nth-of-type(2n+1) {
-    scroll-snap-align: start;
-}
-
-.slide-show>dt:nth-of-type(2n+1) {
-    grid-row-start: 1;
-    justify-self: start;
+.slide-show>dt:nth-of-type(2n) {
+    grid-row-start: 2;
     grid-column-end: span 4;
 }
 
@@ -34,10 +28,5 @@ dl.slide-show {
 }
 
 .slide-show>dd {
-    grid-row-start: 4;
-}
-
-.slide-show>dd:nth-of-type(5n+1) {
     grid-row-start: 3;
-    grid-column-end: span 4;
 }
