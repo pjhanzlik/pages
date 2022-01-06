@@ -1,0 +1,15 @@
+.slides {
+    display: grid;
+    overflow: scroll;
+    grid-auto-flow: column;
+    scroll-snap-type: inline mandatory;
+    width: 100vw;
+    grid-auto-columns: 100vw;
+    grid-auto-rows: 100vh;
+    place-items: center;
+    height: 100vh;
+}
+
+.slides>:is(article,fieldset,figure,li,dt,dd) {
+    scroll-snap-align: center;
+}

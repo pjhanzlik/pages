@@ -1,0 +1,28 @@
+body {
+    background-color: darkslategray;
+    color: whitesmoke;
+    margin: 0;
+    font-family: sans-serif;
+}
+q::before,q::after {
+    content: none;
+}
+
+q {
+    font-weight: bold;
+}
+
+button {
+    background-color: darkslateblue;
+    color: unset;
+    border-radius: 6px;
+    font-family: unset;
+}
+
+button:active:not(:hover) {
+    border-style: outset;
+}
+
+:any-link {
+    color: unset;
+}
