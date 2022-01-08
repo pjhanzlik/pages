@@ -12,17 +12,33 @@ q {
     font-weight: bold;
 }
 
-button {
+button,:any-link {
     background-color: darkslateblue;
     color: unset;
     border-radius: 6px;
-    font-family: unset;
-}
-
-button:active:not(:hover) {
+    border-width: 3px;
+    border-color: slateblue;
     border-style: outset;
+    padding: 1px 6px;
+    font-size: 0.8em;
 }
 
 :any-link {
-    color: unset;
+    text-decoration: unset;
+}
+
+:is(:any-link,button):active {
+    border-style: inset;
+}
+
+button {
+    font-family: unset;
+}
+
+button:disabled {
+    opacity: 0;
+}
+
+:is(button,:any-link):active:not(:hover) {
+    border-style: outset;
 }
